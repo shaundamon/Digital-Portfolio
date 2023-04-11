@@ -1,3 +1,4 @@
+import django_heroku
 from decouple import config
 
 import dj_database_url
@@ -23,7 +24,8 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = ['*', '.herokuapp.com']
 
-CORS_ORIGIN_ALLOW_ALL = True  # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+# If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 LOGIN_URL = '/dashboard/login/'
@@ -106,7 +108,9 @@ if not DEBUG:
         'API_KEY': config('API_KEY', default=''),
         'API_SECRET': config('API_SECRET', default=''),
     }
+
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 else:
     DATABASES = {
@@ -171,5 +175,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
-import django_heroku
 django_heroku.settings(locals())
