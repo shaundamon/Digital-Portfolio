@@ -114,13 +114,7 @@ if not DEBUG:
 
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',
-            'USER': 'postgres',
-            'PASSWORD': 'Iyana@1220',
-            'HOST': 'localhost',
-            'PORT': '5432',
+        'default': dj_database_url.config(conn_max_age=600)
         }
     }
 
@@ -175,8 +169,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'portfolio/static/'),
 )
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
