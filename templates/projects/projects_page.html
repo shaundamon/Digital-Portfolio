@@ -2,11 +2,6 @@
 
 {% block content %}
 {% include 'navbar.html' %}
-<!-- Add back button -->
-<a href="javascript:history.back()" class="back-button" style="margin-left: 1rem; margin-top: 1rem;">
-    <i class="fa fa-arrow-left"></i> Back
-</a>
-   
     <div class="container">
         <div class="row pt-lg-4 justify-content-center">
             <div class="col-12 text-center">
@@ -19,13 +14,14 @@
                     <div class="form-group">
                         <div class="input-group input-group-alternative mb-4">
                             <div class="search-btn" id="search-btn" style="margin-right:8px">
-                                <a href="{{request.META.HTTP_REFERER}}" class="">
+                                <a href="{% url 'homePage' %}" class="">
                                     <span style="color: #17d778">
                                         <i class="fa fa-arrow-left"></i>
                                     </span>
                                 </a>
+
                             </div>
-                            <input id="search-input" class="form-control search-input" name="searchText" placeholder="Search for projects with titles, descriptions, or tools." type="text" required>
+                            <input id="search-input" class="form-control search-input" name="searchText" placeholder="  Search for projects with titles, descriptions, or tools." type="text" required>
                             <div class="search-btn" id="search-btn">
                                 <span><i class="fa fa-search"></i></span>
                             </div>
