@@ -6,8 +6,8 @@ It provides a ModelForm for submitting messages with a name, email address, and 
 from django.forms import ModelForm
 from .models import Message
 from django import forms
+from django.core.validators import FileExtensionValidator
 
-from django import forms
 
 
 class DataScienceConsultingForm(forms.Form):
@@ -34,12 +34,25 @@ class DataScienceConsultingForm(forms.Form):
         ],
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    budget = forms.IntegerField(label="Project Budget (USD)", required=False,
-                                widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    timeline = forms.CharField(label="Project Timeline", max_length=200,
-                               required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    timeline = forms.ChoiceField(
+        label="Project Timeline",
+        choices=[
+            ('1_week', '1 Week'),
+            ('1_month', '1 Month'),
+            ('3_months', '3 Months'),
+            ('6_months', '6 Months'),
+        ],
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
     additional_information = forms.CharField(label="Additional Information", required=False, widget=forms.Textarea(
         attrs={'class': 'form-control', 'rows': 5}))
+    document = forms.FileField(
+        label="Attach Document",
+        required=False,
+        validators=[FileExtensionValidator(
+            allowed_extensions=['pdf', 'doc', 'docx'])],
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control-file'})
+    )
 
 
 class RoboticProcessAutomationForm(forms.Form):

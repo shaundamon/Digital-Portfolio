@@ -20,6 +20,9 @@ from info.models import (
     blog
 )
 
+def success(request):
+    return render(request, 'success.html')
+
 
 def email_send(data):
     old_message = Message.objects.last()

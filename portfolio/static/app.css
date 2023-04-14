@@ -4,6 +4,19 @@
   --bg-color: #1a181e;
   --secondary: #2c303a;
 }
+.hover-dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s linear, visibility 0.3s linear;
+}
+
+.dropdown-menu {
+  margin-top: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s linear, visibility 0.3s linear;
+}
 
 html {
   scroll-behavior: smooth;

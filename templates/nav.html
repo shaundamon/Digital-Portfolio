@@ -1,35 +1,65 @@
 {% load static %}
 <div class="container mt-4">
-    <div class="row">
-        <div class="col-12">
-            <ul class="nav justify-content-center flex-column flex-sm-row" id="tabs-text" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link nav-text mb-sm-4 px-4" href="/#education">Education</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-text mb-sm-3 px-4" href="/#competences">Competences</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-text mb-sm-3 px-4" href="/#projects">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-text mb-sm-3 px-4" href="/#contact-me">Contact Me</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-text mb-sm-3 px-4" href="https://datascience-sa.blogspot.com/">Blog</a>
-                </li>
-                <!-- Services Offered Dropdown -->
-                <li class="nav-item">
-                    <a class="nav-link nav-text mb-sm-3 px-4 dropdown-toggle" href="#" >
-                        Services Offered
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="servicesDropdown">
-                        <a class="dropdown-item" href="/service/data-science-consulting">Data Science Consulting</a>
-                        <a class="dropdown-item" href="/service/robotic-process-automation">Robotic Process Automation</a>
-                        <a class="dropdown-item" href="/service/process-optimization">Process Optimization</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+  <div class="row">
+    <div class="col-12">
+      <ul
+        class="nav justify-content-center flex-column flex-sm-row"
+        id="tabs-text"
+        role="tablist"
+      >
+        <li class="nav-item">
+          <a class="nav-link nav-text mb-sm-4 px-4" href="/#education"
+            >Education</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-text mb-sm-3 px-4" href="/#competences"
+            >Competences</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-text mb-sm-3 px-4" href="/#projects"
+            >Projects</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-text mb-sm-3 px-4" href="/#contact-me"
+            >Contact Me</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link nav-text mb-sm-3 px-4"
+            href="https://datascience-sa.blogspot.com/"
+            >Blog</a
+          >
+        </li>
+        <!-- Services Offered Dropdown -->
+        <li class="nav-item dropdown hover-dropdown">
+          <a
+            class="nav-link nav-text mb-sm-3 px-4"
+            href="#"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Services Offered
+          </a>
+          <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+            <a class="dropdown-item" href="{% url 'data_science_consulting' %}"
+              >Data Science Consulting</a
+            >
+            <a
+              class="dropdown-item"
+              href="{% url 'robotic_process_automation' %}"
+              >Robotic Process Automation</a
+            >
+            <a class="dropdown-item" href="{% url 'process_optimization' %}"
+              >Process Optimization</a
+            >
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </div>

@@ -7,7 +7,8 @@ from .views import (
     projectDetail,
     search,
     handler404,
-    blogDetail
+    blogDetail,
+    success,
 )
 from info.views import (data_science_consulting,
                         robotic_process_automation, process_optimization)
@@ -26,6 +27,7 @@ urlpatterns = [
     path('projects/<str:slug>/', projectDetail, name='projectDetail'),
     path('search/', search, name='search'),
     path('blog/', blogDetail, name='blogDetail'),
+    path('success/', success, name='success'),
     path('blog/<str:slug>/', blogDetail, name='blogDetail'),
     path('data-science-consulting/', data_science_consulting,
          name='data_science_consulting'),
