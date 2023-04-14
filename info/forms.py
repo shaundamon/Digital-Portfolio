@@ -9,22 +9,21 @@ from django import forms
 from django.core.validators import FileExtensionValidator
 
 
-
 class DataScienceConsultingForm(forms.Form):
     name = forms.CharField(label="Your Name", max_length=100,
-                           widget=forms.TextInput(attrs={'class': 'form-control'}))
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'E.g Thembisile Damon'}))
     email = forms.EmailField(label="Your Email", widget=forms.EmailInput(
-        attrs={'class': 'form-control'}))
+        attrs={'class': 'form-control', 'placeholder': 'E.g shaundamon09@gmail.com'}))
     phone = forms.CharField(label="Your Phone", max_length=20, required=False,
-                            widget=forms.TextInput(attrs={'class': 'form-control'}))
+                            widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'E.g +27 12 345 6789'}))
     company = forms.CharField(label="Your Company", max_length=100, required=False,
-                              widget=forms.TextInput(attrs={'class': 'form-control'}))
+                              widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'E.g AnalytiKorner Inc.'}))
     project_title = forms.CharField(
-        label="Project Title", max_length=200, widget=forms.TextInput(attrs={'class': 'form-control'}))
+        label="Project Title", max_length=200, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'E.g Customer Segmentation, Credit Risk, Churn Propensity'}))
     project_description = forms.CharField(label="Project Description", widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 5}))
+        attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'E.g We would like to count the churn propensity of clients with our change of products. /n We would like to investigate the possibility of customers qualifying for credit without the need for credit chec'}))
     objective = forms.CharField(label="Project Objective", widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 5}))
+        attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'E.g Our goal is to retain customers with our change of products'}))
     data_availability = forms.ChoiceField(
         label="Data Availability",
         choices=[
@@ -45,7 +44,7 @@ class DataScienceConsultingForm(forms.Form):
         widget=forms.Select(attrs={'class': 'form-control'})
     )
     additional_information = forms.CharField(label="Additional Information", required=False, widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 5}))
+        attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'E.g On successful delivery of the request/project, we might want to extend the contact for more work'}))
     document = forms.FileField(
         label="Attach Document",
         required=False,
@@ -57,27 +56,27 @@ class DataScienceConsultingForm(forms.Form):
 
 class RoboticProcessAutomationForm(forms.Form):
     name = forms.CharField(label="Your Name", max_length=100,
-                           widget=forms.TextInput(attrs={'class': 'form-control'}))
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name'}))
     email = forms.EmailField(label="Your Email", widget=forms.EmailInput(
-        attrs={'class': 'form-control'}))
+        attrs={'class': 'form-control', 'placeholder': 'Your Email'}))
     phone = forms.CharField(label="Your Phone", max_length=20, required=False,
-                            widget=forms.TextInput(attrs={'class': 'form-control'}))
+                            widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Phone'}))
     company = forms.CharField(label="Your Company", max_length=100, required=False,
-                              widget=forms.TextInput(attrs={'class': 'form-control'}))
+                              widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Company'}))
     department = forms.CharField(label="Department", max_length=100, widget=forms.TextInput(
-        attrs={'class': 'form-control'}))
+        attrs={'class': 'form-control', 'placeholder': 'Department'}))
     process_name = forms.CharField(
-        label="Process Name", max_length=200, widget=forms.TextInput(attrs={'class': 'form-control'}))
+        label="Process Name", max_length=200, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Process Name'}))
     process_description = forms.CharField(label="Process Description", widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 5}))
+        attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Process Description'}))
     current_challenges = forms.CharField(label="Current Challenges", widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 5}))
+        attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Current Challenges'}))
     estimated_time_savings = forms.CharField(label="Estimated Time Savings (Hours/Week)",
-                                             max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+                                             max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Estimated Time Savings'}))
     estimated_cost_savings = forms.IntegerField(
-        label="Estimated Cost Savings (USD/Year)", required=False, widget=forms.NumberInput(attrs={'class': 'form-control'}))
+        label="Estimated Cost Savings (USD/Year)", required=False, widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Estimated Cost Savings'}))
     additional_information = forms.CharField(label="Additional Information", required=False, widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 5}))
+        attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Additional Information'}))
 
 
 class ProcessOptimizationForm(forms.Form):

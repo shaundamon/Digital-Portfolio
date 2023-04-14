@@ -140,6 +140,26 @@ class DataScienceConsultingRequest(models.Model):
         verbose_name_plural = "Blog"
 
 
+class RoboticProcessAutomationRequest(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    company = models.CharField(max_length=100, blank=True, null=True)
+    department = models.CharField(max_length=100)
+    process_name = models.CharField(max_length=200)
+    process_description = models.TextField()
+    current_challenges = models.TextField()
+    estimated_time_savings = models.CharField(
+        max_length=100, blank=True, null=True)
+    estimated_cost_savings = models.IntegerField(blank=True, null=True)
+    additional_information = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.process_name
+
+
 class Message(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     email = models.EmailField(max_length=255, null=False, blank=False)
