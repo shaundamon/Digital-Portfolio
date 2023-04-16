@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render, redirect
 from .forms import DataScienceConsultingForm, RoboticProcessAutomationForm, ProcessOptimizationForm
-from .models import DataScienceConsultingRequest, RoboticProcessAutomationRequest, Event
+from .models import DataScienceConsultingRequest, RoboticProcessAutomationRequest, Event, Education, Experience, Competence
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -92,3 +92,19 @@ def form_submission(request):
 def events(request):
     events = Event.objects.all()
     return render(request, 'events.html', {'events': events})
+
+def experiences_and_education(request):
+    education = Education.objects.all()
+    experiences = Experience.objects.all()
+    context = {
+        'education': education,
+        'experiences': experiences,
+    }
+    return render(request, 'experiences_and_education.html', context)
+
+def languages_and_tools(request):
+    context = {
+        'competences': Competence.objects.all(),
+    }
+    return render(request, 'languages_and_tools.html', context)
+

@@ -8,6 +8,25 @@ class MyModel(models.Model):
     id = models.BigAutoField(primary_key=True)
     # rest of the fields
 
+class Tag(models.Model):
+    TAG_CHOICES = (
+        ('Data Science', 'Data Science'),
+        ('Robotic Process Automation', 'RPA'),
+        ('Data Management', 'Data Management'),
+        ('Data Engineering', 'Data Engineering'),
+        ('Business Analysis', 'Business Analysis'),
+        ('Process Automation', 'Process Automation'),
+        ('Machine Learning', 'Machine Learning'),
+        ('Software Development', 'Software Development'),
+    )
+
+    name = models.CharField(max_length=50, choices=TAG_CHOICES, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
 
 class Information(models.Model):
     name_complete = models.CharField(max_length=50, blank=True, null=True)
@@ -65,6 +84,7 @@ class Project(models.Model):
     description = RichTextField(blank=False, null=False)
     image = models.ImageField(upload_to="projects/", blank=False, null=False)
     tools = models.CharField(max_length=200, blank=False, null=False)
+    tags = models.ManyToManyField(Tag)  # Add the tags ManyToMany field
     demo = models.URLField()
     github = models.URLField()
     show_in_slider = models.BooleanField(default=False)
@@ -84,6 +104,18 @@ class Project(models.Model):
         slug = re.sub(" ", "_", slug)
         return slug.lower()
 
+class ProjectImage(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='project_images/')
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+
+class ProjectVideo(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    video = models.FileField(upload_to='project_videos/')
+    thumbnail = models.ImageField(upload_to='video_thumbnails/')
+    title = models.CharField(max_length=100)
+    description = models.TextField()
 
 class blog(models.Model):
     title = models.CharField(max_length=200, blank=False, null=False)

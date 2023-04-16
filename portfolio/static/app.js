@@ -104,3 +104,15 @@ if (formSubmitBtn && resendMessage) {
       });
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const themeToggle = document.querySelector("#theme-toggle");
+
+  themeToggle.addEventListener("change", function () {
+    if (this.checked) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  });
+});
