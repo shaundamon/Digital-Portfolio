@@ -54,6 +54,8 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'rest_framework',
+
+    'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +92,8 @@ TEMPLATES = [
         },
     },
 ]
+
+IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = 'imagekit.cachefiles.backends.NonValidatingCacheBackend'
 
 WSGI_APPLICATION = 'portfolio.wsgi.application'
 

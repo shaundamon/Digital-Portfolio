@@ -1105,7 +1105,7 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
 }
-  
+
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
@@ -1141,6 +1141,7 @@ html[data-theme='dark'] a {
 html[data-theme='dark'] a:hover {
   color: #3c92d1;
 }
+
 
 
 
