@@ -170,6 +170,8 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+        
 class Message(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     email = models.EmailField(max_length=255, null=False, blank=False)
