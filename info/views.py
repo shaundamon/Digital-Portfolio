@@ -71,6 +71,7 @@ def form_submission(request):
         subject = 'New Client: Form Submitted on Portfolio'
         name = request.POST.get('name')
         email = request.POST.get('email')
+        # project_title = request.POST.get('project_title')
         project_description = request.POST.get('project_description')
         data_availability = request.POST.get('data_availability')
         
@@ -81,6 +82,7 @@ def form_submission(request):
         html_email_body = render_to_string('email_template.html', {
             'name': name,
             'email': email,
+            # 'project_title' :project_title,
             'message': project_description,
             'data available' : data_availability
         })
