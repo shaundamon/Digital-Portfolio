@@ -113,7 +113,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "shaundamon09@gmail.com"
-EMAIL_HOST_PASSWORD = "Iyana@1220"
+EMAIL_HOST_PASSWORD = "wsacvzndidepurrm"
 
 # settings.py
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB

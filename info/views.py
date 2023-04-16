@@ -4,6 +4,7 @@ from .forms import DataScienceConsultingForm, RoboticProcessAutomationForm, Proc
 from .models import DataScienceConsultingRequest, RoboticProcessAutomationRequest, Event
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template.loader import render_to_string
 
 
 def data_science_consulting(request):
@@ -13,8 +14,14 @@ def data_science_consulting(request):
             data_science_consulting_request = DataScienceConsultingRequest(
                 **form.cleaned_data)
             data_science_consulting_request.save()
-            # Add this line to send the email
-            send_email_notification(form.cleaned_data)
+            # Send email notification
+            subject = 'New Client: Form Submitted on Portfolio'
+            message = f"Form data:\n\n{data_science_consulting_request}"
+            from_email = settings.EMAIL_HOST_USER
+            to_email = [settings.EMAIL_HOST_USER]
+
+            send_mail(subject, message, from_email, to_email, fail_silently=False)
+
 
             return redirect('success')
     else:
@@ -46,14 +53,43 @@ def blog(request):
 def success_page(request):
     return render(request, 'success.html')
 
+def send_email(request):
+    if request.method == 'POST':
+        subject = request.POST['subject']
+        message = request.POST['message']
+        sender = request.POST['email']
 
-def send_email_notification(form_data):
-    subject = 'New Client : Form Submitted on Portfolio'
-    message = f"Form data:\n\n{form_data}"
-    from_email = settings.EMAIL_HOST_USER
-    to_email = [settings.EMAIL_HOST_USER]
+        recipients = ['shaundamon09@gmail.com']
 
-    send_mail(subject, message, from_email, to_email, fail_silently=False)
+        send_mail(subject, message, sender, recipients)
+        return redirect('success_page')  # Redirect to a success page or any other page
+
+    return render(request, 'homePage.html')
+
+def form_submission(request):
+    if request.method == 'POST':
+        subject = 'New Client: Form Submitted on Portfolio'
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        project_description = request.POST.get('project_description')
+        data_availability = request.POST.get('data_availability')
+        
+        from_email = settings.EMAIL_HOST_USER
+        to_email = [settings.EMAIL_HOST_USER]
+
+        # Create the HTML email body
+        html_email_body = render_to_string('email_template.html', {
+            'name': name,
+            'email': email,
+            'message': project_description,
+            'data available' : data_availability
+        })
+
+        # Send the email with the HTML email body
+        send_mail(subject, "", from_email, to_email, fail_silently=False, html_message=html_email_body)
+        return redirect('success')
+
+    return render(request, 'services/data_science_consulting.html')  # Replace with the name of your template
 
 def events(request):
     events = Event.objects.all()

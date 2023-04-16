@@ -6,7 +6,16 @@
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="btn btn-custom">Submit</button>
+      <div class="row">
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-custom">Submit</button>
+      </div>
+      <div class="col-md-6 text-md-right">
+        <a href="{% url 'homePage' %}" class="btn btn-custom mt-3 mt-md-0"
+          >Back to Home</a
+        >
+      </div>
+    </div>
     </form>
   </div>
 {% endblock %}

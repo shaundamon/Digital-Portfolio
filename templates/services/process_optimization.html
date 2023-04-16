@@ -1,12 +1,18 @@
-{% extends 'base.html' %}
-
-{% block content %}
-  <div class="container">
-    <h1>Process Optimization</h1>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn btn-custom">Submit</button>
-    </form>
-  </div>
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <h1>Process Optimization</h1>
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <div class="row">
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-custom">Submit</button>
+      </div>
+      <div class="col-md-6 text-md-right">
+        <a href="{% url 'homePage' %}" class="btn btn-custom mt-3 mt-md-0"
+          >Back to Home</a
+        >
+      </div>
+    </div>
+  </form>
+</div>
 {% endblock %}

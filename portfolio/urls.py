@@ -12,7 +12,7 @@ from .views import (
     
 )
 from info.views import (data_science_consulting,
-                        robotic_process_automation, process_optimization, events, blog)
+                        robotic_process_automation, process_optimization, events, blog, send_email, form_submission)
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -31,6 +31,8 @@ urlpatterns = [
     path('success/', success, name='success'),
     path('blog/<str:slug>/', blogDetail, name='blogDetail'),
     path('events/', events, name='events'),
+    path('send_email/', send_email, name='send_email'),
+    path('form_submission/', form_submission, name='form_submission'),
     path('data-science-consulting/', data_science_consulting,
          name='data_science_consulting'),
     path('robotic-process-automation/', robotic_process_automation,
