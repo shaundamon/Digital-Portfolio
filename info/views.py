@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render, redirect
 from .forms import DataScienceConsultingForm, RoboticProcessAutomationForm, ProcessOptimizationForm
-from .models import DataScienceConsultingRequest, RoboticProcessAutomationRequest
+from .models import DataScienceConsultingRequest, RoboticProcessAutomationRequest, Event
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -40,6 +40,8 @@ def process_optimization(request):
     form = ProcessOptimizationForm()
     return render(request, 'services/process_optimization.html', {'form': form})
 
+def blog(request):
+    return render(request, 'blog/blog.html')
 
 def success_page(request):
     return render(request, 'success.html')
@@ -52,3 +54,7 @@ def send_email_notification(form_data):
     to_email = [settings.EMAIL_HOST_USER]
 
     send_mail(subject, message, from_email, to_email, fail_silently=False)
+
+def events(request):
+    events = Event.objects.all()
+    return render(request, 'events.html', {'events': events})

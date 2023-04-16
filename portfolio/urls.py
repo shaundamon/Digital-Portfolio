@@ -9,9 +9,10 @@ from .views import (
     handler404,
     blogDetail,
     success,
+    
 )
 from info.views import (data_science_consulting,
-                        robotic_process_automation, process_optimization)
+                        robotic_process_automation, process_optimization, events, blog)
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,9 +27,10 @@ urlpatterns = [
     path('projects/', projectsPage, name='projectsPage'),
     path('projects/<str:slug>/', projectDetail, name='projectDetail'),
     path('search/', search, name='search'),
-    path('blog/', blogDetail, name='blogDetail'),
+    path('blog/', blog, name='blog'),
     path('success/', success, name='success'),
     path('blog/<str:slug>/', blogDetail, name='blogDetail'),
+    path('events/', events, name='events'),
     path('data-science-consulting/', data_science_consulting,
          name='data_science_consulting'),
     path('robotic-process-automation/', robotic_process_automation,
