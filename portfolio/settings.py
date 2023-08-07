@@ -22,7 +22,7 @@ SECRET_KEY = 'ZTDQfB3RIL0rqZn6AdozPdONLtbbL0rKPigWGASZRCs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['*', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*.herokuapp.com', 'www.damonts.co.za', 'damonts.co.za']
 
 # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ORIGIN_ALLOW_ALL = True
