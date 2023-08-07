@@ -54,6 +54,8 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'rest_framework',
+
+    'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -91,6 +93,8 @@ TEMPLATES = [
     },
 ]
 
+IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = 'imagekit.cachefiles.backends.NonValidatingCacheBackend'
+
 WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 if not DEBUG:
@@ -112,8 +116,11 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+EMAIL_HOST_USER = "shaundamon09@gmail.com"
+EMAIL_HOST_PASSWORD = "wsacvzndidepurrm"
+
+# settings.py
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

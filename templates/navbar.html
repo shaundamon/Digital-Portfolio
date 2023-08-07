@@ -1,65 +1,39 @@
-<nav class="navbar navbar-expand-lg py-lg-1 pt-3">{% load static %}
-    <div class="container nav-bar">
+<nav class="navbar navbar-expand-lg py-lg-1 pt-3">
+  {% load static %}
+  <div class="container nav-bar">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-default"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fa fa-bars text-white"></i>
+    </button>
 
-     {% comment "" %}
-        <a class="name" href="/">
-             <i class="fa fa-code"></i> 
-             Thembisile Damon
-        </a>
-     {% endcomment %}
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa fa-bars text-white"></i>
-        </button>
-
-        <div class="collapse navbar-collapse nav-bar" id="navbar-default">
-            <div class="navbar-collapse-header">
-                <div class="row">
-                    <div class="col-10 collapse-brand">
-                        <a href="javascript:void(0)" class="name">
-                            Thembisile Damon
-                        </a>
-                    </div>
-                    <div class="col-2 collapse-close text-center">
-                        <button type="button" class="navbar-toggler text-warning" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            {% comment "" %}
-            
-            
-            <ul class="navbar-nav ml-lg-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/#education">
-                         <i class="fa fa-graduation-cap"></i> 
-                        <span class="nav-text">Education</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#competences">
-                         <i class="fa fa-graduation-cap"></i> 
-                        <span class="nav-text">Competences</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#projects">
-                         <i class="fa fa-tasks"></i> 
-                        <span class="nav-text">Projects</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#contact-me">
-                         <i class="fa fa-envelope"></i> 
-                        <span class="nav-text">Contact Me</span>
-                    </a>
-                </li>
-            </ul>
-            {% endcomment %}
-            
+    <div class="collapse navbar-collapse nav-bar" id="navbar-default">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-10 collapse-brand">
+            <a href="javascript:void(0)" class="name"> Thembisile Damon </a>
+          </div>
+          <div class="col-2 collapse-close text-center">
+            <button
+              type="button"
+              class="navbar-toggler text-warning"
+              data-toggle="collapse"
+              data-target="#navbar-default"
+              aria-controls="navbar-default"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </nav>

@@ -1,0 +1,132 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="events-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <a href="{% url 'homePage' %}" class="btn btn-custom mt-3"
+          >Back to Home</a
+        >
+      </div>
+    </div>
+
+    <h2>Upcoming Events & Workshops</h2>
+    <div class="row">
+      {% for event in events %}
+      <div class="col-md-4 mb-4">
+        <div
+          class="event-card h-100"
+          data-toggle="modal"
+          data-target="#eventModal{{ event.id }}"
+        >
+          <div class="event-img-container">
+            <img
+              src="{{ event.image.url }}"
+              alt="{{ event.title }}"
+              class="event-img"
+            />
+          </div>
+          <div class="p-3">
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.description|truncatewords:20 }}</p>
+            <p><strong>Date:</strong> {{ event.date }}</p>
+            <p><strong>Time:</strong> {{ event.time }}</p>
+            <p><strong>Location:</strong> {{ event.location }}</p>
+            <!-- Social Sharing Buttons 
+            <div class="social-sharing mt-2 mb-2">
+              <a
+                href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="{% static 'path/to/facebook-icon.png' %}"
+                  alt="Share on Facebook"
+                />
+              </a>
+              <a
+                href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&text={{ event.title|urlencode }}&hashtags={HASHTAGS}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="{% static 'path/to/twitter-icon.png' %}"
+                  alt="Share on Twitter"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri|urlencode }}&title={{ event.title|urlencode }}&summary={{ event.description|truncatewords:20|urlencode }}&source={WEBSITE_NAME}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="{% static 'path/to/linkedin-icon.png' %}"
+                  alt="Share on LinkedIn"
+                />
+              </a>
+            </div>
+            -->
+            <a
+              href="{{ event.ticket_link }}"
+              target="_blank"
+              class="btn btn-custom"
+              >Buy Tickets</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="eventModal{{ event.id }}"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="eventModalLabel{{ event.id }}"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="eventModalLabel{{ event.id }}">
+                {{ event.title }}
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body modal-body-custom">
+              <p class="paragraph_modal">{{ event.description }}</p>
+              <p class="paragraph_modal">
+                <strong>Date:</strong> {{ event.date }}
+              </p>
+              <p class="paragraph_modal">
+                <strong>Time:</strong> {{ event.time }}
+              </p>
+              <p class="paragraph_modal">
+                <strong>Location:</strong> {{ event.location }}
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-custom" data-dismiss="modal">
+                Close
+              </button>
+              <a
+                href="{{ event.ticket_link }}"
+                target="_blank"
+                class="btn btn-custom"
+                >Buy Tickets</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

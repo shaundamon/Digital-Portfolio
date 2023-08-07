@@ -17,8 +17,12 @@ from info.models import (
     Project,
     Information,
     Message,
-    blog
+    blog,
+    Tag,
 )
+
+def success(request):
+    return render(request, 'success.html')
 
 
 def email_send(data):
@@ -77,8 +81,10 @@ def homePage(request):
 def projectsPage(request):
     template_name = 'projects/projects_page.html'
     if request.method == 'GET':
+        tags = Tag.objects.all()
         projects = Project.objects.all().order_by('-id')
         context = {
+            'tags': tags,
             'projects': projects
         }
         return render(request, template_name, context)

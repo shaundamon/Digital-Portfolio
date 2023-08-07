@@ -2,7 +2,7 @@
 
 {% block content %}
 {% include 'navbar.html' %}
-    <div class="container">
+    <div class="container card-content">
         <div class="row pt-lg-4 justify-content-center">
             <div class="col-12 text-center">
                 <h1 class="display-3 title m-0">Projects</h1>
@@ -44,6 +44,16 @@
                             <div class="card-body pt-0">
                                 <h1 class="project-card-title">{{project.title|truncatechars:22}}</h1>
                                 <p class="project-card-disc">{{project.description|truncatechars:100|safe}}</p>
+
+                                <!-- Add tags here -->
+                                <div class="project-tags mt-2">
+                                    {% for tag in project.tags.all %}
+                                        {% if forloop.counter <= 3 %}
+                                            <span class="tag badge badge-pill badge-custom">{{ tag.name }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <!-- End of tags -->
                             </div>
                         </div>
                     </a>
