@@ -186,37 +186,35 @@
     <script type="module">
       import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
       Chatbot.init({
-        chatflowid: "63ad4e63-49df-43b7-a694-f815b20e4ab0",
-        apiHost: "http://localhost:3000",
+        chatflowid: "a18af6b5-1d7a-4cee-9073-81676c106bef",
+        apiHost: "https://flowiseai-railway-production-bbf1.up.railway.app",
         chatflowConfig: {
           // topK: 2
         },
         theme: {
           button: {
-            backgroundColor: "#3B81F6",
+            backgroundColor: "#17d778",
             right: 20,
             bottom: 20,
             size: "medium",
             iconColor: "white",
-            customIconSrc:
-              "https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg",
+            customIconSrc: "https://img.icons8.com/?size=512&id=38977&format=png",
           },
           chatWindow: {
-            welcomeMessage: "Hello! This is custom welcome message",
+            welcomeMessage: "Hello! I am virtual personal assistant for <strong>Thembisile Damon</strong>.",
             backgroundColor: "#ffffff",
             height: 700,
             width: 400,
             fontSize: 16,
-            poweredByTextColor: "#303235",
+            poweredByTextColor: "#17d778",
             botMessage: {
               backgroundColor: "#f7f8ff",
               textColor: "#303235",
               showAvatar: true,
-              avatarSrc:
-                "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png",
+              avatarSrc:"https://fontawesomeicons.com/lib/svg/robot-light.svg",
             },
             userMessage: {
-              backgroundColor: "#3B81F6",
+              backgroundColor: "#17d778",
               textColor: "#ffffff",
               showAvatar: true,
               avatarSrc:
@@ -226,13 +224,12 @@
               placeholder: "Type your question",
               backgroundColor: "#ffffff",
               textColor: "#303235",
-              sendButtonColor: "#3B81F6",
+              sendButtonColor: "#17d778",
             },
           },
         },
       });
     </script>
-
     {% block script %} {% endblock script %}
   </body>
 </html>

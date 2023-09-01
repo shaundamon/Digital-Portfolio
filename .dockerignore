@@ -4,3 +4,7 @@
 *.pyd
 __pycache__
 .dockerignore
+.env
+venv/
+digi_env/
+
