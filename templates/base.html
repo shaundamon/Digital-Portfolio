@@ -81,6 +81,14 @@
 
 
   <body>
+    <script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "4de02784-68ea-4b7f-8759-0cbdb74db2bf",
+        apiHost: "http://localhost:3000",
+    })
+</script>
+
     {% block body %}
     <!-- particles.js container -->
     <div id="particles-js">
