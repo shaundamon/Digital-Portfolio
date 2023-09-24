@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
+    'drf_yasg',
+
     'info',
     'dashboard',
 
@@ -111,8 +113,8 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-print("DEBUG:", DEBUG)
-print("DATABASES:", DATABASES)
+# print("DEBUG:", DEBUG)
+# print("DATABASES:", DATABASES)
 
 # Email settings
 EMAIL_BACKEND = config('EMAIL_BACKEND')
