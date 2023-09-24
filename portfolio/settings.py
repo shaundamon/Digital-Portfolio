@@ -8,15 +8,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-
-
-# use the Config().get() method as you normally would since
-# decouple.config uses that internally.
-# i.e. config('SECRET_KEY') = env_config.get('SECRET_KEY')
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -48,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'drf_yasg',
+    'drf_spectacular',
 
     'info',
     'dashboard',
@@ -95,6 +88,10 @@ TEMPLATES = [
         },
     },
 ] 
+SPECTACULAR_SETTINGS = {
+    'TITLE': "Shaun's Portfolio API",
+    'VERSION': '1.0.0',
+}
 
 IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = 'imagekit.cachefiles.backends.NonValidatingCacheBackend'
 
@@ -175,3 +172,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}

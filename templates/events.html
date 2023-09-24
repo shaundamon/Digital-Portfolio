@@ -27,7 +27,9 @@
             />
           </div>
           <div class="p-3">
-            <h3 class="project-card-title">{{ event.title|truncatewords:3 }}</h3>
+            <h3 class="project-card-title">
+              {{ event.title|truncatewords:2.5 }}
+            </h3>
             <p>{{ event.description|truncatewords:20 }}</p>
             <p><strong>Date:</strong> {{ event.date }}</p>
             <p><strong>Time:</strong> {{ event.time }}</p>
@@ -127,6 +129,83 @@
         </div>
       </div>
       {% endfor %}
+    </div>
+    <!-- Pagination Control -->
+    <div class="pagination">
+      <!-- Add this line for debugging -->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center mt-3 mb-0">
+          <li
+            class="page-item {% if not events.has_previous %}disabled{% endif %}"
+          >
+            <a
+              class="page-link pagination-move"
+              href="{% if events.has_previous %}?page=1{% endif %}"
+              tabindex="-1"
+            >
+              <i class="fa fa-angle-left"></i>
+              <span class="sr-only">First</span>
+            </a>
+          </li>
+          <li
+            class="page-item {% if not events.has_previous %}disabled{% endif %}"
+          >
+            <a
+              class="page-link pagination-move"
+              href="{% if events.has_previous %}?page={{ events.previous_page_number }}{% endif %}"
+            >
+              <i class="fa fa-angle-left"></i>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+
+          <li
+            class="page-item pagination-number {% if not events.has_previous %}disabled{% endif %}"
+          >
+            <a
+              class="page-link"
+              href="{% if events.has_previous %}?page={{ events.previous_page_number }}{% endif %}"
+              >{{ events.number|add:"-1" }}</a
+            >
+          </li>
+
+          <li class="page-item pagination-active">
+            <a class="page-link" href="?page={{ events.number }}"
+              >{{ events.number }}</a
+            >
+          </li>
+
+          <li
+            class="page-item pagination-number {% if not events.has_next %}disabled{% endif %}"
+          >
+            <a
+              class="page-link"
+              href="{% if events.has_next %}?page={{ events.next_page_number }}{% endif %}"
+              >{{ events.number|add:"1" }}</a
+            >
+          </li>
+
+          <li class="page-item {% if not events.has_next %}disabled{% endif %}">
+            <a
+              class="page-link pagination-move"
+              href="{% if events.has_next %}?page={{ events.next_page_number }}{% endif %}"
+            >
+              <i class="fa fa-angle-right"></i>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+
+          <li class="page-item {% if not events.has_next %}disabled{% endif %}">
+            <a
+              class="page-link pagination-move"
+              href="{% if events.has_next %}?page={{ events.paginator.num_pages }}{% endif %}"
+            >
+              <i class="fa fa-angle-right"></i>
+              <span class="sr-only">Last</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </section>
