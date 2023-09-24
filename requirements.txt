@@ -44,3 +44,4 @@ sentry-sdk
 stripe
 ujson
 django-imagekit
+drf_yasg
