@@ -45,3 +45,4 @@ stripe
 ujson
 django-imagekit
 drf_yasg
+drf_spectacular
