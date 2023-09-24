@@ -17,12 +17,14 @@ from info.views import (data_science_consulting,
 
 from django.conf import settings
 from django.conf.urls.static import static
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Your API",
+        title="Shaun's Portfolio API",
         default_version='v1',
-        description="API description",
+        description="This is the API for Shaun's Portfolio. It contains all the data for the portfolio website. The API is built using Django Rest Framework and the documentation is built using swagger UI",
     ),
     public=True,
 )
@@ -68,4 +70,6 @@ urlpatterns = [
          cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc',
          cache_timeout=0), name='schema-redoc'),
+
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

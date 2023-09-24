@@ -11,12 +11,24 @@ from rest_framework.views import APIView
 from rest_framework import authentication, permissions
 from rest_framework.response import Response
 from rest_framework import status
+from drf_spectacular.extensions import OpenApiAuthenticationExtension
+
 
 from .forms import EditProfileForm, CreateProjectForm
 
 from info.models import Information, Message, Project
+from .serializers import DashboardEducationSerializer
 
+class CsrfExemptSessionAuthenticationExtension(OpenApiAuthenticationExtension):
+    target_class = 'dashboard.views.CsrfExemptSessionAuthentication'
+    name = 'CsrfExempt'
 
+    def get_security_definition(self, auto_schema):
+        return {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
 
 
 class CsrfExemptSessionAuthentication(authentication.SessionAuthentication):
@@ -27,6 +39,8 @@ class CsrfExemptSessionAuthentication(authentication.SessionAuthentication):
 class LoginView(APIView):
     permission_classes = [permissions.AllowAny]
     authentication_classes = [CsrfExemptSessionAuthentication]
+    serializer_class = DashboardEducationSerializer
+
     def post(self, request):
         username = request.POST.get('username', None)
         password = request.POST.get('password', None)
@@ -183,13 +197,14 @@ from .serializers import *
 class EducationView(APIView):
     authentication_classes = [CsrfExemptSessionAuthentication]
     permission_classes = [permissions.IsAdminUser]
+    serializer_class = DashboardEducationSerializer 
 
     def get(self, request):
         education = Education.objects.all()
         return render(request, 'dashboard_education.html', {'education':education})
 
     def post(self, request):
-        serializer = EducationSerializer(data=request.data)
+        serializer = DashboardEducationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

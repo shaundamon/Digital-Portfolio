@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'drf_yasg',
+    'drf_spectacular',
 
     'info',
     'dashboard',
@@ -95,6 +96,10 @@ TEMPLATES = [
         },
     },
 ] 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your API',
+    'VERSION': '1.0.0',
+}
 
 IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = 'imagekit.cachefiles.backends.NonValidatingCacheBackend'
 
@@ -175,3 +180,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}

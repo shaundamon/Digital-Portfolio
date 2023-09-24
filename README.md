@@ -38,7 +38,7 @@ Welcome to my digital portfolio! I am a Data Scientist, Web Developer, and RPA D
 1. **Portfolio Website**
    - A showcase of all my projects and skills
    - Technologies: React, Django, HTML, CSS
-   - [Link to Website](#)
+   - [Link to Website](damonts.co.za)
 
 ### RPA Development
 
@@ -49,9 +49,9 @@ Welcome to my digital portfolio! I am a Data Scientist, Web Developer, and RPA D
 
 ## Contact
 
-- **Email**: [your.email@example.com](mailto:your.email@example.com)
-- **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/yourprofile/)
-- **GitHub**: [GitHub Profile](https://github.com/yourusername)
+- **Email**: [shaun@damonts.co.za](mailto:shaun@damonts.co.za)
+- **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/thembisile-d-98b7b3109/)
+- **GitHub**: [GitHub Profile](https://github.com/Thembisile)
 
 ## How to Use This Portfolio
 
@@ -61,7 +61,6 @@ Welcome to my digital portfolio! I am a Data Scientist, Web Developer, and RPA D
 
 ---
 
-Feel free to customize this README to fit the specific content and style of your portfolio.
 ## Database Entity Relationship Diagram
 ![Shaun Damon Portfolio ERD](portfolio_erd.png "ImageTitle")
 
