@@ -1,0 +1,44 @@
+{% extends 'base.html' %}{% load filter_tags %}
+
+{% block content %}
+<div class="container">
+  <div class="row p-lg-4 p-2 justify-content-center">
+    <!-- Blog Title and Back button -->
+    <div class="col-6">
+      <p class="project-title mb-3">{{ blog.title }}</p>
+      <hr class="mt-2 mb-0" />
+    </div>
+    <div class="col-6">
+      <p class="project-title mb-3" align="right">
+        <a href="{{request.META.HTTP_REFERER}}" class="d-block w-100 project-image">
+          <span style="color: #17d778">Go back</span>
+        </a>
+      </p>
+      <hr class="mt-2 mb-0" />
+    </div>
+
+    <!-- Blog Image -->
+    <div class="col-lg-10 col-12">
+      <img
+        class="d-block w-100 project-image"
+        src="{{blog.image.url}}"
+        alt="{{blog.title}} (img)"
+      />
+    </div>
+
+    <!-- Blog Description -->
+    <div class="col-12 text-left">
+      <p class="mini-title">Description:</p>
+      <p class="project-disc">{{blog.description|safe}}</p>
+
+      <!-- Blog Tags -->
+      <div class="mt-4">
+        <p class="mini-title">Tags:</p>
+        {% for tag in blog.tags.all %}
+          <span class="tool">{{ tag.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

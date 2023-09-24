@@ -17,7 +17,7 @@ from info.models import (
     Project,
     Information,
     Message,
-    blog,
+    Blog,
     Tag,
 )
 
@@ -97,10 +97,11 @@ def projectDetail(request, slug):
         return render(request, template_name, {'project': project})
 
 def blogDetail(request, slug):
-    template_name = 'blog/blog.html'
+    template_name = 'blog/blog_detail.html'
     if request.method == 'GET':
-        blog = get_object_or_404(Project, slug=slug)
+        blog = get_object_or_404(Blog, slug=slug)  # Changed from Project to Blog
         return render(request, template_name, {'blog': blog})
+
     
 
 def search(request):

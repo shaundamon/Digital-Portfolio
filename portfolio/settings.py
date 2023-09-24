@@ -17,12 +17,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # use the Config().get() method as you normally would since
 # decouple.config uses that internally.
 # i.e. config('SECRET_KEY') = env_config.get('SECRET_KEY')
-SECRET_KEY = 'ZTDQfB3RIL0rqZn6AdozPdONLtbbL0rKPigWGASZRCs'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*.herokuapp.com', 'www.damonts.co.za', 'damonts.co.za']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+
 
 # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ORIGIN_ALLOW_ALL = True
@@ -91,7 +92,7 @@ TEMPLATES = [
             }
         },
     },
-]
+] 
 
 IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = 'imagekit.cachefiles.backends.NonValidatingCacheBackend'
 
@@ -112,12 +113,12 @@ else:
     }
 
 # Email settings
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "shaundamon09@gmail.com"
-EMAIL_HOST_PASSWORD = "wsacvzndidepurrm"
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # settings.py
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB

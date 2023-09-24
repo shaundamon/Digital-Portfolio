@@ -117,14 +117,15 @@ class ProjectVideo(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
 
-class blog(models.Model):
+class Blog(models.Model):
     title = models.CharField(max_length=200, blank=False, null=False)
     slug = models.SlugField(max_length=200, blank=True, null=True)
     description = RichTextField(blank=False, null=False)
     image = models.ImageField(upload_to="blog/", blank=False, null=False)
     tools = models.CharField(max_length=200, blank=False, null=False)
-    demo = models.URLField()
-    github = models.URLField()
+    demo = models.URLField(blank=True, null=True)  
+    github = models.URLField(blank=True, null=True)  
+    external_source = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -134,7 +135,7 @@ class blog(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = self.slug_generate()
-        super(blog, self).save(*args, **kwargs)
+        super(Blog, self).save(*args, **kwargs)
 
     def slug_generate(self):
         slug = self.title.strip()

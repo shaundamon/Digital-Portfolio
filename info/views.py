@@ -1,7 +1,7 @@
 # Create your views here.
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import DataScienceConsultingForm, RoboticProcessAutomationForm, ProcessOptimizationForm
-from .models import DataScienceConsultingRequest, RoboticProcessAutomationRequest, Event, Education, Experience, Competence
+from .models import DataScienceConsultingRequest, RoboticProcessAutomationRequest, Event, Education, Experience, Competence, Blog
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -49,6 +49,15 @@ def process_optimization(request):
 
 def blog(request):
     return render(request, 'blog/blog.html')
+
+def blog_list(request):
+    blogs = Blog.objects.all()
+    print("Blogs: ", blogs)  
+    return render(request, 'blog/blog_list.html', {'blogs': blogs})
+
+def blog_detail(request, slug):
+    single_blog = get_object_or_404(blog, slug=slug)
+    return render(request, 'blog/blog_detail.html', {'blog': single_blog})
 
 def success_page(request):
     return render(request, 'success.html')

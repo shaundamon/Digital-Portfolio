@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Competence, Education, Experience, Project, Message, Information, Event, Tag
+from .models import Competence, Education, Experience, Project, Message, Information, Event, Tag, Blog
 
 class TagAdmin(admin.ModelAdmin):
     pass
@@ -15,3 +15,4 @@ admin.site.register(Project, ProjectAdmin)
 admin.site.register(Message)
 admin.site.register(Event)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(Blog)

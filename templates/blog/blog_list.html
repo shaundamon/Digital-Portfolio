@@ -1,0 +1,61 @@
+{% extends 'base.html' %}{% load static %}{% load filter_tags %}
+
+{% block content %}
+{% include 'navbar.html' %}
+    <div class="container card-content">
+        <div class="row pt-lg-4 justify-content-center">
+            <div class="col-12 text-center">
+                <h1 class="display-3 title m-0">Blogs</h1>
+                <p class="s-color">Hey, on this page you will find all of my blogs.</p>
+            </div>
+
+            <div class="col-lg-8">
+                <form class="search-form" id="search-form" onSubmit="return false">
+                    <div class="form-group">
+                        <div class="input-group input-group-alternative mb-4">
+                            <div class="search-btn" id="search-btn" style="margin-right:8px">
+                                <a href="{% url 'homePage' %}" class="">
+                                    <span style="color: #17d778">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </span>
+                                </a>
+                            </div>
+                            <input id="search-input" class="form-control search-input" name="searchText" placeholder="  Search for blogs with titles, descriptions, or tags." type="text" required>
+                            <div class="search-btn" id="search-btn">
+                                <span><i class="fa fa-search"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr class="mt-2 mb-4 ">
+
+        <div class="row" id="blogsContainer">
+            {% for blog in blogs %}
+                <div class="col-lg-4 mb-4">
+                    <a href="{% url 'blogDetail' blog.slug %}">
+                        <div class="project-card mirror-face">
+                                <div class="project-card-img">
+                                    <img src="{{blog.image.url}}">
+                                </div>
+                            <div class="card-body pt-0">
+                                <h1 class="project-card-title">{{blog.title|truncatechars:22}}</h1>
+                                <p class="project-card-disc">{{blog.summary|truncatechars:100|safe}}</p>
+
+                                <!-- Add tags here -->
+                                <div class="project-tags mt-2">
+                                    {% for tag in blog.tags.all %}
+                                        {% if forloop.counter <= 3 %}
+                                            <span class="tag badge badge-pill badge-custom">{{ tag.name }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <!-- End of tags -->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock content %}
