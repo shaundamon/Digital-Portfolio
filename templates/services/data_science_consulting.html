@@ -1,7 +1,41 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="container">
+<div class="container" >
   <h1 style="color: #17d778">Data Science Consultation</h1>
+  <!-- Introduction -->
+  <p>
+    Are you looking to harness the power of data to make informed decisions and
+    drive business growth? Our Data Science Consultation service is here to help
+    you unlock the full potential of your data assets.
+  </p>
+
+  <!-- Service Benefits -->
+  <h2 style="color: #17d778">Why Choose Our Data Science Consultation?</h2>
+  <ul style="color:#FFFFFF;">
+    <li>
+      Expert Guidance: Our team of experienced data scientists will provide you
+      with expert guidance tailored to your specific needs.
+    </li>
+    <li>
+      Data-driven Insights: We help you gain valuable insights from your data,
+      enabling data-driven decision-making.
+    </li>
+    <li>
+      Custom Solutions: We create customized data solutions and models to
+      address your unique challenges.
+    </li>
+    <li>
+      Optimized Performance: Maximize the efficiency and performance of your
+      data-driven applications.
+    </li>
+  </ul>
+
+  <!-- Consultation Form -->
+  <h2 style="color: #17d778">Get Started</h2>
+  <p>
+    Ready to take the first step toward data-driven success? Fill out the form
+    below, and our team will get in touch with you shortly.
+  </p>
   <form method="post" action="{% url 'data_science_consulting' %}">
     {% csrf_token %} {{ form.as_p }}
     <div class="row">

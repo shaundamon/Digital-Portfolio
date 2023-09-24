@@ -8,15 +8,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-
-
-# use the Config().get() method as you normally would since
-# decouple.config uses that internally.
-# i.e. config('SECRET_KEY') = env_config.get('SECRET_KEY')
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -97,7 +89,7 @@ TEMPLATES = [
     },
 ] 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Your API',
+    'TITLE': "Shaun's Portfolio API",
     'VERSION': '1.0.0',
 }
 

@@ -1,1267 +1,1218 @@
-// 20230924152946
-// http://localhost:5000/swagger.json
-
 {
     "swagger": "2.0",
     "info": {
-      "title": "Your API",
-      "description": "API description",
-      "version": "v1"
+        "title": "Your API",
+        "description": "API description",
+        "version": "v1"
     },
     "host": "localhost:5000",
     "schemes": [
-      "http"
+        "http"
     ],
     "basePath": "/",
     "consumes": [
-      "application/json"
+        "application/json"
     ],
     "produces": [
-      "application/json"
+        "application/json"
     ],
     "securityDefinitions": {
-      "Basic": {
-        "type": "basic"
-      }
+        "Basic": {
+            "type": "basic"
+        }
     },
     "security": [
-      {
-        "Basic": [
-          
-        ]
-      }
+        {
+            "Basic": []
+        }
     ],
     "paths": {
-      "/api/info/v1/blogs/": {
-        "get": {
-          "operationId": "api_info_v1_blogs_list",
-          "description": "Retrieve a list of all Blogs.",
-          "parameters": [
-            {
-              "name": "some_param",
-              "in": "query",
-              "description": "Description",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Blog"
+        "/api/info/v1/blogs/": {
+            "get": {
+                "operationId": "api_info_v1_blogs_list",
+                "description": "Retrieve a list of all Blogs.",
+                "parameters": [
+                    {
+                        "name": "some_param",
+                        "in": "query",
+                        "description": "Description",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Blog"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "operationId": "api_info_v1_blogs_create",
+                "description": "Create a new Blog.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Blog"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Blog"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": []
+        },
+        "/api/info/v1/blogs/{id}/": {
+            "get": {
+                "operationId": "api_info_v1_blogs_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Blog"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this blog.",
+                    "required": true,
+                    "type": "integer"
                 }
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+            ]
         },
-        "post": {
-          "operationId": "api_info_v1_blogs_create",
-          "description": "Create a new Blog.",
-          "parameters": [
-            {
-              "name": "data",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Blog"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Blog"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+        "/api/info/v1/data-science-consulting-requests/": {
+            "get": {
+                "operationId": "api_info_v1_data-science-consulting-requests_list",
+                "description": "Retrieve a list of all Data Science Consulting Requests.",
+                "parameters": [
+                    {
+                        "name": "some_param",
+                        "in": "query",
+                        "description": "Description",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/DataScienceConsultingRequest"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "operationId": "api_info_v1_data-science-consulting-requests_create",
+                "description": "Create a new Data Science Consulting Request.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DataScienceConsultingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/DataScienceConsultingRequest"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": []
         },
-        "parameters": [
-          
-        ]
-      },
-      "/api/info/v1/blogs/{id}/": {
-        "get": {
-          "operationId": "api_info_v1_blogs_read",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Blog"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "A unique integer value identifying this blog.",
-            "required": true,
-            "type": "integer"
-          }
-        ]
-      },
-      "/api/info/v1/data-science-consulting-requests/": {
-        "get": {
-          "operationId": "api_info_v1_data-science-consulting-requests_list",
-          "description": "Retrieve a list of all Data Science Consulting Requests.",
-          "parameters": [
-            {
-              "name": "some_param",
-              "in": "query",
-              "description": "Description",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/DataScienceConsultingRequest"
+        "/api/info/v1/data-science-consulting-requests/{id}/": {
+            "get": {
+                "operationId": "api_info_v1_data-science-consulting-requests_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/DataScienceConsultingRequest"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this data science consulting request.",
+                    "required": true,
+                    "type": "integer"
                 }
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+            ]
         },
-        "post": {
-          "operationId": "api_info_v1_data-science-consulting-requests_create",
-          "description": "Create a new Data Science Consulting Request.",
-          "parameters": [
-            {
-              "name": "data",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/DataScienceConsultingRequest"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/DataScienceConsultingRequest"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+        "/api/info/v1/events/": {
+            "get": {
+                "operationId": "api_info_v1_events_list",
+                "description": "Retrieve a list of all Events.",
+                "parameters": [
+                    {
+                        "name": "some_param",
+                        "in": "query",
+                        "description": "Description",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Event"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "operationId": "api_info_v1_events_create",
+                "description": "Create a new Event.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": []
         },
-        "parameters": [
-          
-        ]
-      },
-      "/api/info/v1/data-science-consulting-requests/{id}/": {
-        "get": {
-          "operationId": "api_info_v1_data-science-consulting-requests_read",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/DataScienceConsultingRequest"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "A unique integer value identifying this data science consulting request.",
-            "required": true,
-            "type": "integer"
-          }
-        ]
-      },
-      "/api/info/v1/events/": {
-        "get": {
-          "operationId": "api_info_v1_events_list",
-          "description": "Retrieve a list of all Events.",
-          "parameters": [
-            {
-              "name": "some_param",
-              "in": "query",
-              "description": "Description",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Event"
+        "/api/info/v1/events/{id}/": {
+            "get": {
+                "operationId": "api_info_v1_events_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this event.",
+                    "required": true,
+                    "type": "integer"
                 }
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+            ]
         },
-        "post": {
-          "operationId": "api_info_v1_events_create",
-          "description": "Create a new Event.",
-          "parameters": [
-            {
-              "name": "data",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Event"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Event"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+        "/api/info/v1/robotic-process-automation-requests/": {
+            "get": {
+                "operationId": "api_info_v1_robotic-process-automation-requests_list",
+                "description": "Retrieve a list of all Robotic Process Automation Requests.",
+                "parameters": [
+                    {
+                        "name": "some_param",
+                        "in": "query",
+                        "description": "Description",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RoboticProcessAutomationRequest"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "operationId": "api_info_v1_robotic-process-automation-requests_create",
+                "description": "Create a new Robotic Process Automation Request.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RoboticProcessAutomationRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RoboticProcessAutomationRequest"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": []
         },
-        "parameters": [
-          
-        ]
-      },
-      "/api/info/v1/events/{id}/": {
-        "get": {
-          "operationId": "api_info_v1_events_read",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Event"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "A unique integer value identifying this event.",
-            "required": true,
-            "type": "integer"
-          }
-        ]
-      },
-      "/api/info/v1/robotic-process-automation-requests/": {
-        "get": {
-          "operationId": "api_info_v1_robotic-process-automation-requests_list",
-          "description": "Retrieve a list of all Robotic Process Automation Requests.",
-          "parameters": [
-            {
-              "name": "some_param",
-              "in": "query",
-              "description": "Description",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/RoboticProcessAutomationRequest"
+        "/api/info/v1/robotic-process-automation-requests/{id}/": {
+            "get": {
+                "operationId": "api_info_v1_robotic-process-automation-requests_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/RoboticProcessAutomationRequest"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this robotic process automation request.",
+                    "required": true,
+                    "type": "integer"
                 }
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+            ]
         },
-        "post": {
-          "operationId": "api_info_v1_robotic-process-automation-requests_create",
-          "description": "Create a new Robotic Process Automation Request.",
-          "parameters": [
-            {
-              "name": "data",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/RoboticProcessAutomationRequest"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/RoboticProcessAutomationRequest"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+        "/api/portfolio/v1/competences/": {
+            "get": {
+                "operationId": "api_portfolio_v1_competences_list",
+                "description": "Retrieve a list of all Competences.",
+                "parameters": [
+                    {
+                        "name": "some_param",
+                        "in": "query",
+                        "description": "Description",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Competence"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "operationId": "api_portfolio_v1_competences_create",
+                "description": "Create a new Competence.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Competence"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Competence"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": []
         },
-        "parameters": [
-          
-        ]
-      },
-      "/api/info/v1/robotic-process-automation-requests/{id}/": {
-        "get": {
-          "operationId": "api_info_v1_robotic-process-automation-requests_read",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/RoboticProcessAutomationRequest"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "A unique integer value identifying this robotic process automation request.",
-            "required": true,
-            "type": "integer"
-          }
-        ]
-      },
-      "/api/portfolio/v1/competences/": {
-        "get": {
-          "operationId": "api_portfolio_v1_competences_list",
-          "description": "Retrieve a list of all Competences.",
-          "parameters": [
-            {
-              "name": "some_param",
-              "in": "query",
-              "description": "Description",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Competence"
+        "/api/portfolio/v1/competences/{id}/": {
+            "get": {
+                "operationId": "api_portfolio_v1_competences_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Competence"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this competence.",
+                    "required": true,
+                    "type": "integer"
                 }
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+            ]
         },
-        "post": {
-          "operationId": "api_portfolio_v1_competences_create",
-          "description": "Create a new Competence.",
-          "parameters": [
-            {
-              "name": "data",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Competence"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Competence"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+        "/api/portfolio/v1/educations/": {
+            "get": {
+                "operationId": "api_portfolio_v1_educations_list",
+                "description": "Retrieve a list of all Educations.",
+                "parameters": [
+                    {
+                        "name": "some_param",
+                        "in": "query",
+                        "description": "Description",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Education"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "operationId": "api_portfolio_v1_educations_create",
+                "description": "Create a new Education.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Education"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Education"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": []
         },
-        "parameters": [
-          
-        ]
-      },
-      "/api/portfolio/v1/competences/{id}/": {
-        "get": {
-          "operationId": "api_portfolio_v1_competences_read",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Competence"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "A unique integer value identifying this competence.",
-            "required": true,
-            "type": "integer"
-          }
-        ]
-      },
-      "/api/portfolio/v1/educations/": {
-        "get": {
-          "operationId": "api_portfolio_v1_educations_list",
-          "description": "Retrieve a list of all Educations.",
-          "parameters": [
-            {
-              "name": "some_param",
-              "in": "query",
-              "description": "Description",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Education"
+        "/api/portfolio/v1/educations/{id}/": {
+            "get": {
+                "operationId": "api_portfolio_v1_educations_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Education"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this education.",
+                    "required": true,
+                    "type": "integer"
                 }
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+            ]
         },
-        "post": {
-          "operationId": "api_portfolio_v1_educations_create",
-          "description": "Create a new Education.",
-          "parameters": [
-            {
-              "name": "data",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Education"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Education"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+        "/api/portfolio/v1/experiences/": {
+            "get": {
+                "operationId": "api_portfolio_v1_experiences_list",
+                "description": "Retrieve a list of all Experiences.",
+                "parameters": [
+                    {
+                        "name": "some_param",
+                        "in": "query",
+                        "description": "Description",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Experience"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "operationId": "api_portfolio_v1_experiences_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Experience"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Experience"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": []
         },
-        "parameters": [
-          
-        ]
-      },
-      "/api/portfolio/v1/educations/{id}/": {
-        "get": {
-          "operationId": "api_portfolio_v1_educations_read",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Education"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "A unique integer value identifying this education.",
-            "required": true,
-            "type": "integer"
-          }
-        ]
-      },
-      "/api/portfolio/v1/experiences/": {
-        "get": {
-          "operationId": "api_portfolio_v1_experiences_list",
-          "description": "Retrieve a list of all Experiences.",
-          "parameters": [
-            {
-              "name": "some_param",
-              "in": "query",
-              "description": "Description",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Experience"
+        "/api/portfolio/v1/experiences/{id}/": {
+            "get": {
+                "operationId": "api_portfolio_v1_experiences_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Experience"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this experience.",
+                    "required": true,
+                    "type": "integer"
                 }
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+            ]
         },
-        "post": {
-          "operationId": "api_portfolio_v1_experiences_create",
-          "description": "",
-          "parameters": [
-            {
-              "name": "data",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Experience"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Experience"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+        "/api/portfolio/v1/projects/": {
+            "get": {
+                "operationId": "api_portfolio_v1_projects_list",
+                "description": "Retrieve a list of all Projects.",
+                "parameters": [
+                    {
+                        "name": "some_param",
+                        "in": "query",
+                        "description": "Description",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Project"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "operationId": "api_portfolio_v1_projects_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Project"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Project"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": []
         },
-        "parameters": [
-          
-        ]
-      },
-      "/api/portfolio/v1/experiences/{id}/": {
-        "get": {
-          "operationId": "api_portfolio_v1_experiences_read",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Experience"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "A unique integer value identifying this experience.",
-            "required": true,
-            "type": "integer"
-          }
-        ]
-      },
-      "/api/portfolio/v1/projects/": {
-        "get": {
-          "operationId": "api_portfolio_v1_projects_list",
-          "description": "Retrieve a list of all Projects.",
-          "parameters": [
-            {
-              "name": "some_param",
-              "in": "query",
-              "description": "Description",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/Project"
+        "/api/portfolio/v1/projects/{id}/": {
+            "get": {
+                "operationId": "api_portfolio_v1_projects_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Project"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this project.",
+                    "required": true,
+                    "type": "integer"
                 }
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+            ]
         },
-        "post": {
-          "operationId": "api_portfolio_v1_projects_create",
-          "description": "",
-          "parameters": [
-            {
-              "name": "data",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/Project"
-              }
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Project"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
+        "/dashboard/education/": {
+            "get": {
+                "operationId": "dashboard_education_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "dashboard"
+                ]
+            },
+            "post": {
+                "operationId": "dashboard_education_create",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "dashboard"
+                ]
+            },
+            "parameters": []
         },
-        "parameters": [
-          
-        ]
-      },
-      "/api/portfolio/v1/projects/{id}/": {
-        "get": {
-          "operationId": "api_portfolio_v1_projects_read",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/Project"
-              }
-            }
-          },
-          "tags": [
-            "api"
-          ]
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "A unique integer value identifying this project.",
-            "required": true,
-            "type": "integer"
-          }
-        ]
-      },
-      "/dashboard/education/": {
-        "get": {
-          "operationId": "dashboard_education_list",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": ""
-            }
-          },
-          "tags": [
-            "dashboard"
-          ]
-        },
-        "post": {
-          "operationId": "dashboard_education_create",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "201": {
-              "description": ""
-            }
-          },
-          "tags": [
-            "dashboard"
-          ]
-        },
-        "parameters": [
-          
-        ]
-      },
-      "/dashboard/login/": {
-        "get": {
-          "operationId": "dashboard_login_list",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "200": {
-              "description": ""
-            }
-          },
-          "tags": [
-            "dashboard"
-          ]
-        },
-        "post": {
-          "operationId": "dashboard_login_create",
-          "description": "",
-          "parameters": [
-            
-          ],
-          "responses": {
-            "201": {
-              "description": ""
-            }
-          },
-          "tags": [
-            "dashboard"
-          ]
-        },
-        "parameters": [
-          
-        ]
-      }
+        "/dashboard/login/": {
+            "get": {
+                "operationId": "dashboard_login_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "dashboard"
+                ]
+            },
+            "post": {
+                "operationId": "dashboard_login_create",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "dashboard"
+                ]
+            },
+            "parameters": []
+        }
     },
     "definitions": {
-      "Blog": {
-        "required": [
-          "title",
-          "description"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "ID",
-            "type": "integer",
-            "readOnly": true
-          },
-          "title": {
-            "title": "Title",
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1
-          },
-          "slug": {
-            "title": "Slug",
-            "type": "string",
-            "format": "slug",
-            "pattern": "^[-a-zA-Z0-9_]+$",
-            "maxLength": 200,
-            "x-nullable": true
-          },
-          "description": {
-            "title": "Description",
-            "type": "string",
-            "minLength": 1
-          },
-          "image": {
-            "title": "Image",
-            "type": "string",
-            "readOnly": true,
-            "format": "uri"
-          },
-          "tools": {
-            "title": "Tools",
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1,
-            "x-nullable": true
-          },
-          "demo": {
-            "title": "Demo",
-            "type": "string",
-            "format": "uri",
-            "maxLength": 200,
-            "x-nullable": true
-          },
-          "github": {
-            "title": "Github",
-            "type": "string",
-            "format": "uri",
-            "maxLength": 200,
-            "x-nullable": true
-          },
-          "external_source": {
-            "title": "External source",
-            "type": "string",
-            "format": "uri",
-            "maxLength": 200,
-            "x-nullable": true
-          }
+        "Blog": {
+            "required": [
+                "title",
+                "description"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "slug": {
+                    "title": "Slug",
+                    "type": "string",
+                    "format": "slug",
+                    "pattern": "^[-a-zA-Z0-9_]+$",
+                    "maxLength": 200,
+                    "x-nullable": true
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "image": {
+                    "title": "Image",
+                    "type": "string",
+                    "readOnly": true,
+                    "format": "uri"
+                },
+                "tools": {
+                    "title": "Tools",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1,
+                    "x-nullable": true
+                },
+                "demo": {
+                    "title": "Demo",
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 200,
+                    "x-nullable": true
+                },
+                "github": {
+                    "title": "Github",
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 200,
+                    "x-nullable": true
+                },
+                "external_source": {
+                    "title": "External source",
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 200,
+                    "x-nullable": true
+                }
+            }
+        },
+        "DataScienceConsultingRequest": {
+            "required": [
+                "name",
+                "email",
+                "project_title",
+                "project_description",
+                "objective",
+                "data_availability",
+                "timeline"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "email": {
+                    "title": "Email",
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254,
+                    "minLength": 1
+                },
+                "phone": {
+                    "title": "Phone",
+                    "type": "string",
+                    "maxLength": 20
+                },
+                "company": {
+                    "title": "Company",
+                    "type": "string",
+                    "maxLength": 100
+                },
+                "project_title": {
+                    "title": "Project title",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "project_description": {
+                    "title": "Project description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "objective": {
+                    "title": "Objective",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "data_availability": {
+                    "title": "Data availability",
+                    "type": "string",
+                    "enum": [
+                        "yes",
+                        "no",
+                        "unsure"
+                    ]
+                },
+                "budget": {
+                    "title": "Budget",
+                    "type": "integer",
+                    "x-nullable": true
+                },
+                "timeline": {
+                    "title": "Timeline",
+                    "type": "string",
+                    "enum": [
+                        "1_week",
+                        "1_month",
+                        "3_months",
+                        "6_months"
+                    ]
+                },
+                "additional_information": {
+                    "title": "Additional information",
+                    "type": "string"
+                },
+                "document": {
+                    "title": "Document",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "format": "uri"
+                }
+            }
+        },
+        "Event": {
+            "required": [
+                "title",
+                "description",
+                "date",
+                "time",
+                "location",
+                "ticket_link"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "date": {
+                    "title": "Date",
+                    "type": "string",
+                    "format": "date"
+                },
+                "time": {
+                    "title": "Time",
+                    "type": "string"
+                },
+                "location": {
+                    "title": "Location",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "image": {
+                    "title": "Image",
+                    "type": "string",
+                    "readOnly": true,
+                    "format": "uri"
+                },
+                "ticket_link": {
+                    "title": "Ticket link",
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 200,
+                    "minLength": 1
+                }
+            }
+        },
+        "RoboticProcessAutomationRequest": {
+            "required": [
+                "name",
+                "email",
+                "department",
+                "process_name",
+                "process_description",
+                "current_challenges"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "email": {
+                    "title": "Email",
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254,
+                    "minLength": 1
+                },
+                "phone": {
+                    "title": "Phone",
+                    "type": "string",
+                    "maxLength": 20,
+                    "x-nullable": true
+                },
+                "company": {
+                    "title": "Company",
+                    "type": "string",
+                    "maxLength": 100,
+                    "x-nullable": true
+                },
+                "department": {
+                    "title": "Department",
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "process_name": {
+                    "title": "Process name",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "process_description": {
+                    "title": "Process description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "current_challenges": {
+                    "title": "Current challenges",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "estimated_time_savings": {
+                    "title": "Estimated time savings",
+                    "type": "string",
+                    "maxLength": 100,
+                    "x-nullable": true
+                },
+                "estimated_cost_savings": {
+                    "title": "Estimated cost savings",
+                    "type": "integer",
+                    "x-nullable": true
+                },
+                "additional_information": {
+                    "title": "Additional information",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "created_at": {
+                    "title": "Created at",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "updated_at": {
+                    "title": "Updated at",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                }
+            }
+        },
+        "Competence": {
+            "required": [
+                "title",
+                "description"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "image": {
+                    "title": "Image",
+                    "type": "string",
+                    "readOnly": true,
+                    "format": "uri"
+                }
+            }
+        },
+        "Education": {
+            "required": [
+                "title",
+                "description",
+                "the_year"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "the_year": {
+                    "title": "The year",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                }
+            }
+        },
+        "Experience": {
+            "required": [
+                "title",
+                "description",
+                "the_year"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "the_year": {
+                    "title": "The year",
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1
+                }
+            }
+        },
+        "Project": {
+            "required": [
+                "title",
+                "description",
+                "tools",
+                "demo",
+                "github",
+                "tags"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "slug": {
+                    "title": "Slug",
+                    "type": "string",
+                    "format": "slug",
+                    "pattern": "^[-a-zA-Z0-9_]+$",
+                    "maxLength": 200,
+                    "x-nullable": true
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "image": {
+                    "title": "Image",
+                    "type": "string",
+                    "readOnly": true,
+                    "format": "uri"
+                },
+                "tools": {
+                    "title": "Tools",
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "demo": {
+                    "title": "Demo",
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "github": {
+                    "title": "Github",
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "show_in_slider": {
+                    "title": "Show in slider",
+                    "type": "boolean"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "uniqueItems": true
+                }
+            }
         }
-      },
-      "DataScienceConsultingRequest": {
-        "required": [
-          "name",
-          "email",
-          "project_title",
-          "project_description",
-          "objective",
-          "data_availability",
-          "timeline"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "ID",
-            "type": "integer",
-            "readOnly": true
-          },
-          "name": {
-            "title": "Name",
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1
-          },
-          "email": {
-            "title": "Email",
-            "type": "string",
-            "format": "email",
-            "maxLength": 254,
-            "minLength": 1
-          },
-          "phone": {
-            "title": "Phone",
-            "type": "string",
-            "maxLength": 20
-          },
-          "company": {
-            "title": "Company",
-            "type": "string",
-            "maxLength": 100
-          },
-          "project_title": {
-            "title": "Project title",
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1
-          },
-          "project_description": {
-            "title": "Project description",
-            "type": "string",
-            "minLength": 1
-          },
-          "objective": {
-            "title": "Objective",
-            "type": "string",
-            "minLength": 1
-          },
-          "data_availability": {
-            "title": "Data availability",
-            "type": "string",
-            "enum": [
-              "yes",
-              "no",
-              "unsure"
-            ]
-          },
-          "budget": {
-            "title": "Budget",
-            "type": "integer",
-            "x-nullable": true
-          },
-          "timeline": {
-            "title": "Timeline",
-            "type": "string",
-            "enum": [
-              "1_week",
-              "1_month",
-              "3_months",
-              "6_months"
-            ]
-          },
-          "additional_information": {
-            "title": "Additional information",
-            "type": "string"
-          },
-          "document": {
-            "title": "Document",
-            "type": "string",
-            "readOnly": true,
-            "x-nullable": true,
-            "format": "uri"
-          }
-        }
-      },
-      "Event": {
-        "required": [
-          "title",
-          "description",
-          "date",
-          "time",
-          "location",
-          "ticket_link"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "ID",
-            "type": "integer",
-            "readOnly": true
-          },
-          "title": {
-            "title": "Title",
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1
-          },
-          "description": {
-            "title": "Description",
-            "type": "string",
-            "minLength": 1
-          },
-          "date": {
-            "title": "Date",
-            "type": "string",
-            "format": "date"
-          },
-          "time": {
-            "title": "Time",
-            "type": "string"
-          },
-          "location": {
-            "title": "Location",
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1
-          },
-          "image": {
-            "title": "Image",
-            "type": "string",
-            "readOnly": true,
-            "format": "uri"
-          },
-          "ticket_link": {
-            "title": "Ticket link",
-            "type": "string",
-            "format": "uri",
-            "maxLength": 200,
-            "minLength": 1
-          }
-        }
-      },
-      "RoboticProcessAutomationRequest": {
-        "required": [
-          "name",
-          "email",
-          "department",
-          "process_name",
-          "process_description",
-          "current_challenges"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "ID",
-            "type": "integer",
-            "readOnly": true
-          },
-          "name": {
-            "title": "Name",
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1
-          },
-          "email": {
-            "title": "Email",
-            "type": "string",
-            "format": "email",
-            "maxLength": 254,
-            "minLength": 1
-          },
-          "phone": {
-            "title": "Phone",
-            "type": "string",
-            "maxLength": 20,
-            "x-nullable": true
-          },
-          "company": {
-            "title": "Company",
-            "type": "string",
-            "maxLength": 100,
-            "x-nullable": true
-          },
-          "department": {
-            "title": "Department",
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1
-          },
-          "process_name": {
-            "title": "Process name",
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1
-          },
-          "process_description": {
-            "title": "Process description",
-            "type": "string",
-            "minLength": 1
-          },
-          "current_challenges": {
-            "title": "Current challenges",
-            "type": "string",
-            "minLength": 1
-          },
-          "estimated_time_savings": {
-            "title": "Estimated time savings",
-            "type": "string",
-            "maxLength": 100,
-            "x-nullable": true
-          },
-          "estimated_cost_savings": {
-            "title": "Estimated cost savings",
-            "type": "integer",
-            "x-nullable": true
-          },
-          "additional_information": {
-            "title": "Additional information",
-            "type": "string",
-            "x-nullable": true
-          },
-          "created_at": {
-            "title": "Created at",
-            "type": "string",
-            "format": "date-time",
-            "readOnly": true
-          },
-          "updated_at": {
-            "title": "Updated at",
-            "type": "string",
-            "format": "date-time",
-            "readOnly": true
-          }
-        }
-      },
-      "Competence": {
-        "required": [
-          "title",
-          "description"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "ID",
-            "type": "integer",
-            "readOnly": true
-          },
-          "title": {
-            "title": "Title",
-            "type": "string",
-            "maxLength": 50,
-            "minLength": 1
-          },
-          "description": {
-            "title": "Description",
-            "type": "string",
-            "minLength": 1
-          },
-          "image": {
-            "title": "Image",
-            "type": "string",
-            "readOnly": true,
-            "format": "uri"
-          }
-        }
-      },
-      "Education": {
-        "required": [
-          "title",
-          "description",
-          "the_year"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "ID",
-            "type": "integer",
-            "readOnly": true
-          },
-          "title": {
-            "title": "Title",
-            "type": "string",
-            "maxLength": 50,
-            "minLength": 1
-          },
-          "description": {
-            "title": "Description",
-            "type": "string",
-            "minLength": 1
-          },
-          "the_year": {
-            "title": "The year",
-            "type": "string",
-            "maxLength": 50,
-            "minLength": 1
-          }
-        }
-      },
-      "Experience": {
-        "required": [
-          "title",
-          "description",
-          "the_year"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "ID",
-            "type": "integer",
-            "readOnly": true
-          },
-          "title": {
-            "title": "Title",
-            "type": "string",
-            "maxLength": 50,
-            "minLength": 1
-          },
-          "description": {
-            "title": "Description",
-            "type": "string",
-            "minLength": 1
-          },
-          "the_year": {
-            "title": "The year",
-            "type": "string",
-            "maxLength": 50,
-            "minLength": 1
-          }
-        }
-      },
-      "Project": {
-        "required": [
-          "title",
-          "description",
-          "tools",
-          "demo",
-          "github",
-          "tags"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "ID",
-            "type": "integer",
-            "readOnly": true
-          },
-          "title": {
-            "title": "Title",
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1
-          },
-          "slug": {
-            "title": "Slug",
-            "type": "string",
-            "format": "slug",
-            "pattern": "^[-a-zA-Z0-9_]+$",
-            "maxLength": 200,
-            "x-nullable": true
-          },
-          "description": {
-            "title": "Description",
-            "type": "string",
-            "minLength": 1
-          },
-          "image": {
-            "title": "Image",
-            "type": "string",
-            "readOnly": true,
-            "format": "uri"
-          },
-          "tools": {
-            "title": "Tools",
-            "type": "string",
-            "maxLength": 200,
-            "minLength": 1
-          },
-          "demo": {
-            "title": "Demo",
-            "type": "string",
-            "format": "uri",
-            "maxLength": 200,
-            "minLength": 1
-          },
-          "github": {
-            "title": "Github",
-            "type": "string",
-            "format": "uri",
-            "maxLength": 200,
-            "minLength": 1
-          },
-          "show_in_slider": {
-            "title": "Show in slider",
-            "type": "boolean"
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "uniqueItems": true
-          }
-        }
-      }
     }
-  }
+}
