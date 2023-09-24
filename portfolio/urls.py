@@ -9,7 +9,7 @@ from .views import (
     handler404,
     blogDetail,
     success,
-    
+
 )
 from info.views import (data_science_consulting,
                         robotic_process_automation, process_optimization, events, blog, blog_list, send_email, form_submission, experiences_and_education, languages_and_tools)
@@ -33,7 +33,8 @@ urlpatterns = [
     path('events/', events, name='events'),
     path('send_email/', send_email, name='send_email'),
     path('form_submission/', form_submission, name='form_submission'),
-    path('experiences_and_education/', experiences_and_education, name='experiences_and_education'),
+    path('experiences_and_education/', experiences_and_education,
+         name='experiences_and_education'),
     path('languages-and-tools/', languages_and_tools, name='languages_and_tools'),
     path('data-science-consulting/', data_science_consulting,
          name='data_science_consulting'),
@@ -46,5 +47,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', include('dashboard.urls')),
 
+    # include the portfolio api urls
+    path('api/portfolio/v1/', include('portfolio.api.v1.urls')),
+
+    # include the info api urls
+    path('api/info/v1/', include('info.api.v1.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

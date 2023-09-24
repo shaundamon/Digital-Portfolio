@@ -122,7 +122,7 @@ class Blog(models.Model):
     slug = models.SlugField(max_length=200, blank=True, null=True)
     description = RichTextField(blank=False, null=False)
     image = models.ImageField(upload_to="blog/", blank=False, null=False)
-    tools = models.CharField(max_length=200, blank=False, null=False)
+    tools = models.CharField(max_length=200, blank=False, null=True)
     demo = models.URLField(blank=True, null=True)  
     github = models.URLField(blank=True, null=True)  
     external_source = models.URLField(blank=True, null=True)

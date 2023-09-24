@@ -111,6 +111,8 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+print("DEBUG:", DEBUG)
+print("DATABASES:", DATABASES)
 
 # Email settings
 EMAIL_BACKEND = config('EMAIL_BACKEND')
