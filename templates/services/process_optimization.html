@@ -1,6 +1,67 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 <div class="container">
-  <h1 style="color:#17d778">Process Optimization</h1>
+  <h1 style="color: #17d778">Process Optimization</h1>
+  <!-- Introduction -->
+  <p>
+    Explore our range of services designed to meet your diverse needs. We are
+    committed to delivering excellence in every aspect of our work.
+  </p>
+
+  <!-- Service Cards -->
+  <h2 style="color: #17d778">Our Services</h2>
+  <div class="row">
+    <!-- Data Science Consulting Service Card -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="service-card text-center">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #17d778">Data Science Consulting</h5>
+          <p class="card-text">
+            We offer expert data science consulting services to help you
+            leverage data for informed decision-making.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Development Service Card -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="service-card text-center">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #17d778">Web Development</h5>
+          <p class="card-text">
+            Our web development solutions are tailored to your business needs,
+            delivering functional and user-friendly websites.
+          </p>
+          <!-- Add more details or buttons as needed -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Robotic Process Automation Service Card -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="service-card text-center">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #17d778">Robotic Process Automation (RPA)</h5>
+          <p class="card-text">
+            Streamline your business processes with our RPA solutions for
+            increased efficiency.
+          </p>
+          <!-- Add more details or buttons as needed -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more service cards as needed -->
+
+  </div>
+
+  <!-- Call to Action -->
+  <p>
+    Ready to take advantage of our services? Contact us today to discuss your
+    project and requirements.
+  </p>
   <form method="post">
     {% csrf_token %} {{ form.as_p }}
     <div class="row">

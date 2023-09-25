@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from info.models import Education, Competence, Experience
 
-class EducationSerializer(serializers.ModelSerializer):
+class DashboardEducationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Education
         fields = "__all__"

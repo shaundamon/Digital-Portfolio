@@ -5,6 +5,15 @@ from .models import DataScienceConsultingRequest, RoboticProcessAutomationReques
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import requests
+from .models import Event 
+from datetime import datetime
+from django.core.exceptions import ValidationError
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 
 def data_science_consulting(request):
@@ -99,8 +108,21 @@ def form_submission(request):
     return render(request, 'services/data_science_consulting.html')  # Replace with the name of your template
 
 def events(request):
-    events = Event.objects.all()
+    events_list = Event.objects.all() 
+
+    # Pagination
+    paginator = Paginator(events_list, 6)  
+    page = request.GET.get('page')
+    
+    try:
+        events = paginator.page(page)
+    except PageNotAnInteger:
+        events = paginator.page(1)
+    except EmptyPage:
+        events = paginator.page(paginator.num_pages)
+
     return render(request, 'events.html', {'events': events})
+
 
 def experiences_and_education(request):
     education = Education.objects.all()
@@ -117,3 +139,53 @@ def languages_and_tools(request):
     }
     return render(request, 'languages_and_tools.html', context)
 
+def update_events_from_api():
+    access_token = os.environ.get("ACCESS_TOKEN")
+    base_url = "https://api.predicthq.com/v1/events/"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+    }
+
+    page = 1  # Start at page 1
+
+    while True:  # Loop through each page of data
+        url = f"{base_url}?page={page}"
+        response = requests.get(url, headers=headers)
+        
+        if response.status_code == 200:
+            data = response.json()
+            events_data = data['results']
+
+            for event in events_data:
+                title = event.get('title', '')
+                description = event.get('description', '')
+                start = event.get('start')
+
+                if start:
+                    dt_object = datetime.fromisoformat(start.replace("Z", "+00:00"))
+                    date = dt_object.date()
+                    time = dt_object.time()
+                else:
+                    continue  # Skip event if 'start' is not available
+
+                location_coordinates = event.get('location', [])
+                location = ', '.join(map(str, location_coordinates))
+
+                Event.objects.update_or_create(
+                    title=title,
+                    defaults={
+                        'description': description,
+                        'date': date,
+                        'time': time,
+                        'location': location
+                    }
+                )
+            
+            # Check if there is a next page
+            if 'next' in data and data['next']:
+                page += 1  # Increment the page number
+            else:
+                break  # Exit loop if there are no more pages
+        else:
+            print(f"Received unexpected status code {response.status_code}. Stopping.")
+            break  # Exit loop if the response status is not 200
