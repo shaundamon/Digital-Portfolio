@@ -115,8 +115,6 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-# print("DEBUG:", DEBUG)
-# print("DATABASES:", DATABASES)
 
 # Email settings
 EMAIL_BACKEND = config('EMAIL_BACKEND')
@@ -173,7 +171,7 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
