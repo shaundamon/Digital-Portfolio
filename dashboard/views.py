@@ -118,11 +118,21 @@ def messages(request):
     context.update({'messages_active': True, 'messages': messages, 'profile': profile})
     return render(request, template_name, context)
 
-@login_required()
 def messages_api(request):
     if request.method == 'POST':
         type = request.POST.get('option_type')
         message_id = request.POST.get('message_id')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message_text = request.POST.get('message')
+
+        # Check if data is present
+        if name and email and message_text:
+            # Create and save the new message object
+            message = Message(name=name, email=email, message=message_text)
+            message.save()
+            return JsonResponse({'status': 'success'})
+        
         if type == "delete":
             message = Message.objects.get(id=int(message_id))
             message.delete()
@@ -143,6 +153,10 @@ def messages_api(request):
             messages = list(messages)
 
             return JsonResponse({'status': 'success', 'messages': messages})
+        
+        else:
+            # Data is missing, return a bad request response
+            return JsonResponse({'status': 'bad request', 'error': 'Missing data'})
     return JsonResponse({'status': 'bad request'})
 
 
