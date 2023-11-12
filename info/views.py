@@ -15,7 +15,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
 def data_science_consulting(request):
     if request.method == 'POST':
         form = DataScienceConsultingForm(request.POST, request.FILES)
