@@ -504,6 +504,30 @@ hr {
   color: #ff5252;
 }
 
+.alert-messages {
+  position: fixed;
+  top: -50px;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  text-align: center;
+  transition: top 0.5s ease-in-out;
+}
+
+.alert {
+  display: inline-block;
+  padding: 10px;
+  margin: 0 auto;
+  color: white;
+  font-weight: bold;
+  background-color: #28a745;
+  border-radius: 5px;
+}
+
+.alert-messages.show {
+  top: 20px;
+}
+
 .contact .send-message {
   width: 100%;
   color: var(--scolor) !important;
