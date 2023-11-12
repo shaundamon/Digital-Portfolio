@@ -81,7 +81,7 @@
   <div class="col-lg-6 pl-lg-4 mt-lg-0 mt-6 contact" id="message-me">
     <h2>Interested to work together? <span>Let's talk</span></h2>
 
-    <form class="form" id="form">
+    <form class="form" id="form" method="post" action="{% url 'dashboard:messages_api' %}">
       {% csrf_token %}
       <div class="row">
         <div class="col-md-6">
