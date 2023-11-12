@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_user
+from django.contrib import messages as dj_messages 
 
 from rest_framework.views import APIView
 from rest_framework import authentication, permissions
@@ -120,18 +121,17 @@ def messages(request):
 
 def messages_api(request):
     if request.method == 'POST':
-        type = request.POST.get('option_type')
+        option_type = request.POST.get('option_type')
         message_id = request.POST.get('message_id')
         name = request.POST.get('name')
         email = request.POST.get('email')
         message_text = request.POST.get('message')
 
-        # Check if data is present
         if name and email and message_text:
-            # Create and save the new message object
-            message = Message(name=name, email=email, message=message_text)
-            message.save()
-            return JsonResponse({'status': 'success'})
+            new_message = Message(name=name, email=email, message=message_text)
+            new_message.save()
+            dj_messages.success(request, 'Your message was sent successfully')
+            return redirect('homePage') 
         
         if type == "delete":
             message = Message.objects.get(id=int(message_id))
@@ -153,9 +153,7 @@ def messages_api(request):
             messages = list(messages)
 
             return JsonResponse({'status': 'success', 'messages': messages})
-        
         else:
-            # Data is missing, return a bad request response
             return JsonResponse({'status': 'bad request', 'error': 'Missing data'})
     return JsonResponse({'status': 'bad request'})
 
