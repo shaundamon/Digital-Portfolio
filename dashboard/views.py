@@ -7,6 +7,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_user
 from django.contrib import messages as dj_messages 
+from django.core.mail import send_mail
+from django.conf import settings
 
 from rest_framework.views import APIView
 from rest_framework import authentication, permissions
@@ -127,6 +129,11 @@ def messages_api(request):
         email = request.POST.get('email')
         message_text = request.POST.get('message')
 
+        if name and email and message_text:
+            subject = f"New Client - Form Submitted on Portfolio by {name}"
+            message = f"Name: {name}\nEmail: {email}\n\n{message_text}"
+            send_mail(subject, message, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER])
+ 
         if name and email and message_text:
             new_message = Message(name=name, email=email, message=message_text)
             new_message.save()

@@ -85,9 +85,9 @@ def send_email(request):
 
 def form_submission(request):
     if request.method == 'POST':
-        subject = 'New Client: Form Submitted on Portfolio'
         name = request.POST.get('name')
         email = request.POST.get('email')
+        subject = f'New Client: Form Submitted on Portfolio by {name}'
         project_description = request.POST.get('project_description')
         
         from_email = settings.EMAIL_HOST_USER
