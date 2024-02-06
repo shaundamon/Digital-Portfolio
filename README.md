@@ -20,8 +20,8 @@ Welcome to my digital portfolio! I am a Data Scientist, Web Developer, and RPA D
 
 ## Skills
 
-- **Data Science**: Machine Learning, Data Analytics, Python, R, Jupyter
-- **Web Development**: React, Django, HTML, CSS, JavaScript
+- **Data Science**: Machine Learning, Data Analytics, Python, Jupyter
+- **Web Development**: Django, HTML, CSS, JavaScript(Learning ReactJS)
 - **RPA Development**: Automation Anywhere, UiPath, Blue Prism
 
 ## Projects
@@ -37,7 +37,7 @@ Welcome to my digital portfolio! I am a Data Scientist, Web Developer, and RPA D
 
 1. **Portfolio Website**
    - A showcase of all my projects and skills
-   - Technologies: React, Django, HTML, CSS
+   - Technologies: Django, HTML, CSS
    - [Link to Website](damonts.co.za)
 
 ### RPA Development
