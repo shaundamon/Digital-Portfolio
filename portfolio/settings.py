@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 if not DEBUG:
     # Production database settings
     DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600)
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=600)
     }
 else:
     # Local development database settings
