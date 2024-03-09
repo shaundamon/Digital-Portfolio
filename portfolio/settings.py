@@ -104,6 +104,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 if not DEBUG:
     # Production database settings
     DATABASES = {
+        'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': '<db_name>',
             'USER': '<db_user>',
@@ -111,6 +112,7 @@ if not DEBUG:
             'HOST': os.environ.get('STACKHERO_POSTGRESQL_HOST'),
             'PORT': '<db_port>',  # Common default PostgreSQL port is 5432
         }
+    }
 else:
     # Local development database settings
     DATABASES = {
