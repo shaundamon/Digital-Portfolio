@@ -104,8 +104,13 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 if not DEBUG:
     # Production database settings
     DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600)
-    }
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': '<db_name>',
+            'USER': '<db_user>',
+            'PASSWORD': os.environ.get('STACKHERO_POSTGRESQL_ADMIN_PASSWORD'),
+            'HOST': os.environ.get('STACKHERO_POSTGRESQL_HOST'),
+            'PORT': '<db_port>',  # Common default PostgreSQL port is 5432
+        }
 else:
     # Local development database settings
     DATABASES = {
@@ -174,7 +179,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Media files settings (if you also want to upload media files to S3)
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
