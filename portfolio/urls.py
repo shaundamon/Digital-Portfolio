@@ -13,7 +13,9 @@ from .views import (
 
 )
 from info.views import (data_science_consulting,
-                        robotic_process_automation, process_optimization, events, blog, blog_list, send_email, form_submission, experiences_and_education, languages_and_tools)
+                        robotic_process_automation, process_optimization, 
+                        events, blog, blog_list, send_email, form_submission, 
+                        experiences_and_education, languages_and_tools)
 
 from django.conf import settings
 from django.conf.urls.static import static

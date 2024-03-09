@@ -61,6 +61,4 @@ Welcome to my digital portfolio! I am a Data Scientist, Web Developer, and RPA D
 
 ---
 
-## Database Entity Relationship Diagram
-![Shaun Damon Portfolio ERD](portfolio_erd.png "ImageTitle")
 
