@@ -16,10 +16,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.extensions import OpenApiAuthenticationExtension
 
-
 from .forms import EditProfileForm, CreateProjectForm
 
-from info.models import Information, Message, Project
+from info.models import Information, Message, Project, Education
 from .serializers import DashboardEducationSerializer
 
 class CsrfExemptSessionAuthenticationExtension(OpenApiAuthenticationExtension):
@@ -63,7 +62,22 @@ class LoginView(APIView):
     def get(self, request):
             return render(request, "login.html", {})
 
+class EducationView(APIView):
+    authentication_classes = [CsrfExemptSessionAuthentication]
+    permission_classes = [permissions.IsAdminUser]
+    serializer_class = DashboardEducationSerializer 
 
+    def get(self, request):
+        education = Education.objects.all()
+        return render(request, 'dashboard_education.html', {'education':education})
+
+    def post(self, request):
+        serializer = DashboardEducationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 @login_required()
 def dashboard(request):
     template_name = 'dashboard.html'
@@ -209,22 +223,3 @@ def projects_api(request):
     return JsonResponse({'status': 'Bad Request'})
 
 
-
-from info.models import Education
-from .serializers import *
-
-class EducationView(APIView):
-    authentication_classes = [CsrfExemptSessionAuthentication]
-    permission_classes = [permissions.IsAdminUser]
-    serializer_class = DashboardEducationSerializer 
-
-    def get(self, request):
-        education = Education.objects.all()
-        return render(request, 'dashboard_education.html', {'education':education})
-
-    def post(self, request):
-        serializer = DashboardEducationSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

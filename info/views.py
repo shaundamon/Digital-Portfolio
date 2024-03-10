@@ -100,11 +100,10 @@ def form_submission(request):
             'message': project_description
         })
 
-        # Send the email with the HTML email body
         send_mail(subject, "", from_email, to_email, fail_silently=False, html_message=html_email_body)
         return redirect('success')
 
-    return render(request, 'services/data_science_consulting.html')  # Replace with the name of your template
+    return render(request, 'services/data_science_consulting.html')  
 
 def events(request):
     events_list = Event.objects.all() 
@@ -121,7 +120,6 @@ def events(request):
         events = paginator.page(paginator.num_pages)
 
     return render(request, 'events.html', {'events': events})
-
 
 def experiences_and_education(request):
     education = Education.objects.all()
@@ -145,9 +143,9 @@ def update_events_from_api():
         'Authorization': f'Bearer {access_token}',
     }
 
-    page = 1  # Start at page 1
+    page = 1  
 
-    while True:  # Loop through each page of data
+    while True:  
         url = f"{base_url}?page={page}"
         response = requests.get(url, headers=headers)
         
@@ -182,9 +180,9 @@ def update_events_from_api():
             
             # Check if there is a next page
             if 'next' in data and data['next']:
-                page += 1  # Increment the page number
+                page += 1 
             else:
-                break  # Exit loop if there are no more pages
+                break 
         else:
             print(f"Received unexpected status code {response.status_code}. Stopping.")
-            break  # Exit loop if the response status is not 200
+            break  
