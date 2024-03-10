@@ -5,7 +5,7 @@ My online and newly revamoed digital portfolio.
 
 ## Overview
 
-Welcome to my digital portfolio! I am a Data Scientist, Web Developer, and RPA Developer based in Gauteng, South Africa. This portfolio showcases my skills, projects, and expertise in software development and artificial intelligence.
+Welcome to my digital portfolio! I am a Data Scientist, Software Developer, and RPA Developer based in Gauteng, South Africa. This portfolio showcases my skills, projects, and expertise in software development and artificial intelligence.
 
 ## Table of Contents
 
