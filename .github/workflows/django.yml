@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     services:
       postgres:
         image: postgres
@@ -31,38 +31,34 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
-    - name: Build and push Docker image (Optional Push)
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./Dockerfile
-        push: false
-        tags: shaundamon/my-django-app:latest
-        build-args: |
-          SECRET_KEY=${{ secrets.SECRET_KEY }}
-          DEBUG=${{ secrets.DEBUG }}
-          ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
-          EMAIL_BACKEND=${{ secrets.EMAIL_BACKEND }}
-          EMAIL_HOST=${{ secrets.EMAIL_HOST }}
-          EMAIL_USE_TLS=${{ secrets.EMAIL_USE_TLS }}
-          EMAIL_PORT=${{ secrets.EMAIL_PORT }}
-          EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }}
-          EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }}
-          AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }}
-          AWS_S3_CUSTOM_DOMAIN=${{ secrets.AWS_S3_CUSTOM_DOMAIN }}
-          AWS_S3_OBJECT_PARAMETERS=${{ secrets.AWS_S3_OBJECT_PARAMETERS }}
-          AWS_LOCATION=${{ secrets.AWS_LOCATION }}
-          AWS_DEFAULT_ACL=${{ secrets.AWS_DEFAULT_ACL }}
-          AWS_QUERYSTRING_AUTH=${{ secrets.AWS_QUERYSTRING_AUTH }}
-          STACKHERO_POSTGRESQL_ADMIN_PASSWORD=${{ secrets.STACKHERO_POSTGRESQL_ADMIN_PASSWORD }}
-          STACKHERO_POSTGRESQL_HOST=${{ secrets.STACKHERO_POSTGRESQL_HOST }}
-          DATABASE_URL=${{ secrets.DATABASE_URL }}
-          DEFAULT_FILE_STORAGE=${{ secrets.DEFAULT_FILE_STORAGE }}
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag portfolio-shaun:latest
 
-    - name: Run the Docker container
-      run: docker run -d -p 8000:8000 --name django_container shaundamon/my-django-app:latest
+    - name: Run the Docker container with Environment Variables
+      run: |
+        docker run -d -p 8000:8000 --name portfolio-shaun \
+        -e SECRET_KEY="${{ secrets.SECRET_KEY }}" \
+        -e DEBUG="${{ secrets.DEBUG }}" \
+        -e ALLOWED_HOSTS="${{ secrets.ALLOWED_HOSTS }}" \
+        -e EMAIL_BACKEND="${{ secrets.EMAIL_BACKEND }}" \
+        -e EMAIL_HOST="${{ secrets.EMAIL_HOST }}" \
+        -e EMAIL_USE_TLS="${{ secrets.EMAIL_USE_TLS }}" \
+        -e EMAIL_PORT="${{ secrets.EMAIL_PORT }}" \
+        -e EMAIL_HOST_USER="${{ secrets.EMAIL_HOST_USER }}" \
+        -e EMAIL_HOST_PASSWORD="${{ secrets.EMAIL_HOST_PASSWORD }}" \
+        -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" \
+        -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
+        -e AWS_STORAGE_BUCKET_NAME="${{ secrets.AWS_STORAGE_BUCKET_NAME }}" \
+        -e AWS_S3_CUSTOM_DOMAIN="${{ secrets.AWS_S3_CUSTOM_DOMAIN }}" \
+        -e AWS_S3_OBJECT_PARAMETERS="${{ secrets.AWS_S3_OBJECT_PARAMETERS }}" \
+        -e AWS_LOCATION="${{ secrets.AWS_LOCATION }}" \
+        -e AWS_DEFAULT_ACL="${{ secrets.AWS_DEFAULT_ACL }}" \
+        -e AWS_QUERYSTRING_AUTH="${{ secrets.AWS_QUERYSTRING_AUTH }}" \
+        -e STACKHERO_POSTGRESQL_ADMIN_PASSWORD="${{ secrets.STACKHERO_POSTGRESQL_ADMIN_PASSWORD }}" \
+        -e STACKHERO_POSTGRESQL_HOST="${{ secrets.STACKHERO_POSTGRESQL_HOST }}" \
+        -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+        -e DEFAULT_FILE_STORAGE="${{ secrets.DEFAULT_FILE_STORAGE }}" \
+        portfolio-shaun:latest
 
     - name: Wait for application to start
       run: sleep 10
