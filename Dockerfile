@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y postgresql-client libpq-dev
 WORKDIR /app
 
 # Copy env variables
-COPY .env /app/.env
+# COPY .env /app/.env
 
 # Copy the current directory contents into the container
 COPY . /app
