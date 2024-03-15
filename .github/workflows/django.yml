@@ -31,12 +31,14 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag portfolio-shaun:latest
+
     - name: Run the Docker container
-      run: docker run -d -p 8000:8000 --name django_container shaundamon/portfolio-shaun:latest
+      run: docker run -d -p 8000:8000 --name portfolio-shaun portfolio-shaun:latest
 
     - name: Wait for application to start
       run: sleep 10
 
     - name: Run Tests
-      run: docker exec django_container python manage.py test
-
+      run: docker exec portfolio-shaun python manage.py test
