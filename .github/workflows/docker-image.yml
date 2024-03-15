@@ -1,0 +1,30 @@
+name: Django CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag portfolio-shaun:latest
+
+    - name: Run the Docker container
+      run: docker run -d -p 8000:8000 --name portfolio-shaun portfolio-shaun:latest
+
+    - name: Test the application
+      run: |
+        sleep 10
+        curl http://localhost:8000
