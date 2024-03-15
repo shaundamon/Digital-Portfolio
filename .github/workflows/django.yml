@@ -19,7 +19,6 @@ jobs:
           POSTGRES_DB: postgres
         ports:
           - 5432:5432
-        # Set health checks to wait until postgres is ready
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -29,16 +28,29 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-django-app
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
 
-    - name: Run Docker container
-      run: docker run -d -p 8000:8000 --name django_container my-django-app
+    - name: Log in to Docker Hub (Optional)
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Check running container
-      run: docker ps | grep django_container
+    - name: Build and push Docker image (Optional Push)
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./Dockerfile
+        push: false
+        tags: yourusername/my-django-app:latest
 
-    # Add any other steps here if you need to interact with the application
-    # For example, to run tests you could execute commands within the container:
+    - name: Run the Docker container
+      run: docker run -d -p 8000:8000 --name django_container yourusername/my-django-app:latest
+
+    - name: Wait for application to start
+      run: sleep 10
+
     - name: Run Tests
       run: docker exec django_container python manage.py test
+
