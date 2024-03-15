@@ -1,0 +1,17 @@
+{
+    "environments": {
+        "test": {
+            "scripts": {
+                "test": "python manage.py test"
+            },
+            "addons": [
+                "heroku-postgresql"
+            ],
+            "buildpacks": [
+                {
+                    "url": "heroku/python"
+                }
+            ]
+        }
+    }
+}
