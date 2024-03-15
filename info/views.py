@@ -137,7 +137,7 @@ def languages_and_tools(request):
     return render(request, 'languages_and_tools.html', context)
 
 def update_events_from_api():
-    access_token = os.environ.get("ACCESS_TOKEN")
+    access_token = config("ACCESS_TOKEN")
     base_url = "https://api.predicthq.com/v1/events/"
     headers = {
         'Authorization': f'Bearer {access_token}',

@@ -4,10 +4,6 @@ from decouple import config
 import dj_database_url
 
 import os
-from dotenv import load_dotenv, find_dotenv
-
-# Load environment variables from .env file
-load_dotenv(find_dotenv('.env'))
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -17,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
@@ -104,7 +100,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 if not DEBUG:
     # Production database settings
     DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=600)
+    'default': dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600)
     }
 else:
     # Local development database settings
