@@ -1,12 +1,16 @@
 # Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import DataScienceConsultingForm, RoboticProcessAutomationForm, ProcessOptimizationForm
-from .models import DataScienceConsultingRequest, RoboticProcessAutomationRequest, Event, Education, Experience, Competence, Blog
+from .forms import (DataScienceConsultingForm, RoboticProcessAutomationForm, 
+                    ProcessOptimizationForm)
+from .models import (DataScienceConsultingRequest, Competence, Blog,
+                    RoboticProcessAutomationRequest, Event, Education,
+                    Experience, Information)
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import requests
+from decouple import config
 from .models import Event 
 from datetime import datetime
 from django.core.exceptions import ValidationError
@@ -132,6 +136,7 @@ def experiences_and_education(request):
 
 def languages_and_tools(request):
     context = {
+        'info': Information.objects.all(),
         'competences': Competence.objects.all(),
     }
     return render(request, 'languages_and_tools.html', context)

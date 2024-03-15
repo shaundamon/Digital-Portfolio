@@ -662,6 +662,7 @@ hr {
   padding: 0px;
   display: flex;
   flex-direction: column;
+  height: 400px;
 }
 
 .project-card:hover {
@@ -674,6 +675,7 @@ hr {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  height: 200px;
 }
 
 .project-card-img img {
