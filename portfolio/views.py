@@ -83,9 +83,11 @@ def projectsPage(request):
     if request.method == 'GET':
         tags = Tag.objects.all()
         projects = Project.objects.all().order_by('-id')
+        info = Information.objects.first()
         context = {
             'tags': tags,
-            'projects': projects
+            'projects': projects,
+            'info': info,
         }
         return render(request, template_name, context)
 
@@ -94,7 +96,8 @@ def projectDetail(request, slug):
     template_name = 'projects/project_detail.html'
     if request.method == 'GET':
         project = get_object_or_404(Project, slug=slug)
-        return render(request, template_name, {'project': project})
+        info = Information.objects.first()
+        return render(request, template_name, {'project': project, 'info': info})
 
 def blogDetail(request, slug):
     template_name = 'blog/blog_detail.html'

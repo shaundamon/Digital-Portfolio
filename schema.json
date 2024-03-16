@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.3",
     "info": {
-        "title": "Your API",
+        "title": "Shaun's Portfolio Dashboard API",
         "version": "1.0.0"
     },
     "paths": {

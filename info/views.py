@@ -136,7 +136,7 @@ def experiences_and_education(request):
 
 def languages_and_tools(request):
     context = {
-        'info': Information.objects.all(),
+        'info': Information.objects.first(),
         'competences': Competence.objects.all(),
     }
     return render(request, 'languages_and_tools.html', context)
