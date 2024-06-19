@@ -59,6 +59,8 @@ Welcome to my digital portfolio! I am a Data Scientist, Software Developer, and 
 2. For code samples, click the "Link to Code" provided under each project.
 3. Feel free to reach out via [Contact](#contact) for collaborations or inquiries.
 
+## Repo Activity
+![Alt](https://repobeats.axiom.co/api/embed/a25d05d5be8c04ec008faf8b8faa3c0a2b3c0eb8.svg "Repobeats analytics image")
 ---
 
 
