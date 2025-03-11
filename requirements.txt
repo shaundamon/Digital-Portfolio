@@ -27,7 +27,6 @@ asyncpg
 gunicorn==20.1.0
 psycopg2-binary==2.9.9
 pytz==2022.7.1
-django-heroku
 asgiref
 django-allauth
 django-ckeditor
